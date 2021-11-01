@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
-
+import { Component,ElementRef, ViewChild } from '@angular/core';
+// import { Subscription } from 'rxjs';
+// import { NavService } from './Shared/Services/nav.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'phan-mem-quan-ly-cong-viec';
+  
+
+  constructor() {
+    
+  }
+
 }

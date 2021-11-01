@@ -1,0 +1,42 @@
+<header class="top-bar-nav">
+  <div
+    class="menu-section-container"
+    ng-sidebar-content
+    (click)="_toggleSidebar()"
+    style="display: flex"
+  >
+    <div class="menu-button" style="cursor: pointer">
+      <mat-icon class="menu-icon">{{ _opened ? "close" : "menu" }}</mat-icon>
+    </div>
+    <div style="display: block">
+      <div class="active-section">
+        {{ _opened ? "Close" : "Menu" }}
+        <div class="triangle-bottom-right"></div>
+      </div>
+    </div>
+  </div>
+  <div class="logo">
+    <a href=""> Phần mềm quản lý công việc </a>
+  </div>
+</header>
+
+<ng-sidebar-container>
+  <ng-sidebar [opened]="_opened">
+    
+    <div class="menu-items">
+      <a href="" class="nav-item"
+        >Home
+        <mat-icon class="right-arrow">arrow_forward</mat-icon>
+      </a>
+      <a href="" class="nav-item"
+        >Second
+        <mat-icon class="right-arrow">arrow_forward</mat-icon>
+      </a>
+      <a href="" class="nav-item"
+        >Third
+        <mat-icon class="right-arrow">arrow_forward</mat-icon>
+      </a>
+    </div>
+  </ng-sidebar>
+</ng-sidebar-container>
+

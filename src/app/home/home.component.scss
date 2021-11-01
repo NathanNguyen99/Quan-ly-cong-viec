@@ -1,0 +1,109 @@
+.top-bar-nav {
+  height: 65px;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px #eeeeee;
+  position: relative;
+
+  .menu-icon {
+    width: 64px;
+    height: 64px;
+    display: block;
+    box-sizing: border-box;
+    color: #e10a0a;
+    padding: 20px;
+    transform: scale(1.4);
+  }
+
+  .active-section {
+    text-transform: uppercase;
+    position: relative;
+    padding-right: 32px;
+    height: 63px;
+    font-family: Barlow, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 4.27;
+    letter-spacing: 2px;
+    color: #e10a0a;
+    background-image: linear-gradient(to right, #ffffff 0%, #f2f2f2 100%);
+    cursor: pointer;
+
+    .triangle-bottom-right {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 0;
+      height: 0;
+      border-bottom: 63px solid white;
+      border-left: 32px solid transparent;
+    }
+  }
+
+  .logo {
+    top: 0;
+    position: absolute;
+    left: 50%;
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+ng-sidebar-container {
+  height: 100vh;
+}
+
+::ng-deep .ng-sidebar {
+  background-color: #f4f4f4;
+  width: 300px;
+  padding: 2em 3em;
+  box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
+
+  .menu-items {
+    padding-left: 20px;
+    padding-top: 20px;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+
+    .nav-item {
+      text-decoration: none;
+      width: 280px;
+      height: 64px;
+      font-size: 32px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2;
+      letter-spacing: -0.32px;
+      cursor: pointer;
+      position: relative;
+      color: black;
+      outline: none;
+
+      .right-arrow {
+        position: absolute;
+        right: 0px;
+        display: none;
+        top: 0px;
+        justify-content: center;
+        align-items: center;
+        height: 64px;
+      }
+    }
+
+    .nav-item:hover {
+      color: rgb(225, 10, 10);
+
+    }
+
+    .nav-item:hover .right-arrow {
+      display: flex;
+    }
+  }
+}
