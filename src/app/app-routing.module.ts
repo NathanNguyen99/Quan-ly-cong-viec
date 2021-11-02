@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { AuthGuard }  from './Auth/canActivateAuthGuard';
+import { LoginComponent }   from './login/login.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent
-
+  {path: '', redirectTo: 'home',pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard] 
+  // canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
   providers: []
 })

@@ -1,0 +1,74 @@
+<div class="login-layout">
+  <div id="left pr">
+    <div id="wrap" style="height: 100%; min-height: 100%">
+      <div id="main" style="overflow: auto; padding-bottom: 48px">
+        <div id="wrapper" style="padding-top: 8%">
+          <div class="logo-wrapper mb24">
+            <div
+              style="height: 100%; display: table-cell; vertical-align: bottom"
+            >
+              <img class="logo" src="../../assets/oryza.png" alt="" />
+              <div style="font-weight: bold">Phần mềm quản lý công việc</div>
+            </div>
+          </div>
+          <div id="content" style="display: block">
+            <div id="theloginform">
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="loginError" style="display: block">
+                  {{
+                    errormgs == undefined
+                      ? "Để truy cập phần mềm bạn cần đăng nhập"
+                      : errormgs
+                  }}
+                </div>
+                <div id="usernamegroup" style="position: relative">
+                  <label for="username" class="label usernamelabel"
+                    >Tên người dùng</label
+                  ><br />
+                  <input
+                    class="input wide mb16 mt8 username"
+                    matInput
+                    formControlName="username"
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+                  /><br />
+                  <label for="password" class="label">Mật khẩu</label><br />
+                  <input
+                    class="input wide mb16 mt8 password"
+                    type="password"
+                    matInput
+                    formControlName="password"
+                  />
+                </div>
+                <!-- login button -->
+                <input
+                  [disabled]="isLoading"
+                  class="button r4 wide primary"
+                  value="Login"
+                  type="submit"
+                />
+                <div class="p16 pr remember">
+                  <input type="checkbox" id="remember" class="r4 mr8 fl" />
+                  <label for="remember" class="fl pr">Remember me</label><br />
+                </div>
+              </form>
+            </div>
+            <div class="mb20">
+              <a href="" class="fl small" style="text-decoration: none"
+                >Quên mật khẩu?</a
+              >
+            </div>
+            <div class="bt pt16" style="text-align: center">
+              <input
+                [disabled]="isLoading"
+                class="button r4 wide5 secondary"
+                style="text-align: center"
+                value="Tạo tài khoản"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">© 2021 Copyright Oryza. All rights reserved.</div>
+  </div>
+</div>
