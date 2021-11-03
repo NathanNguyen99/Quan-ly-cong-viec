@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SidebarModule } from 'ng-sidebar';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,12 +21,24 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppConfig } from './Config/config';
 import { AuthGuard } from './Auth/canActivateAuthGuard';
 import { NavService } from './Shared/Services/nav.service';
+import { NavigationComponent } from './navigation/navigation.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './Shared/Services/alert.service';
+import { UserService } from './Shared/Services/user.service';
+import { MainPostComponent } from './main-post/main-post.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    LoadingComponent
+    LoadingComponent,
+    NavigationComponent,
+    ChangePasswordComponent,
+    AlertComponent,
+    MainPostComponent
   ],
   imports: [
     BrowserModule,
@@ -40,12 +53,17 @@ import { NavService } from './Shared/Services/nav.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatDialogModule,
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [
     TokenService,
     baseService,
     Auth,
     NavService,
+    AlertService,
+    UserService,
     AuthGuard,
     AppConfig
   ],

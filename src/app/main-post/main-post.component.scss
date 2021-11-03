@@ -1,0 +1,192 @@
+.main-post {
+  padding: 0px 12px;
+  max-width: 100%;
+  margin: auto;
+  z-index: -1;
+
+  .main-post-container {
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 8px;
+    text-align: left;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: unset;
+    box-shadow: none;
+    border: solid 1px #eeeeee;
+    transform: translateY(2px);
+    
+
+    .main-post-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      z-index: -1;
+
+      .main-post-content-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        padding: 5px 0px 5px 5px;
+        overflow-wrap: break-word;
+        width: 75%;
+        height: auto;
+
+        .inside-content-container {
+          display: flex;
+          justify-content: flex-start;
+          position: relative;
+          width: 100%;
+          flex-direction: column;
+          color: black;
+
+          .up-content-container {
+            display: flex;
+            justify-content: flex-start;
+            position: relative;
+            height: 75%;
+
+            .head-section {
+              display: inline-block;
+              border-radius: 10px;
+              padding: 2px 5px 2px 5px;
+              cursor: pointer;
+            }
+
+            .head-section:hover {
+              background-color: white;
+
+              .arrow-button {
+                background-color: #007cce;
+
+                .arrow-button-icon {
+                  color: white;
+                }
+              }
+
+              .head {
+                color: #007cce;
+              }
+
+              .number-of-task {
+                color: #007cce;
+              }
+            }
+
+            .head {
+              display: inline-block;
+              font-size: 24px;
+              font-weight: bold;
+            }
+
+            .comment-section {
+            
+              display: inline-block;
+              border-radius: 10px;
+              padding: 0px 5px 0px 5px;
+              cursor: pointer;
+              height: auto;
+              //background-color: white;
+
+              .comment-icon {
+                color: black;
+                
+              }
+            }
+
+            .time-section {
+              width: auto;
+
+              input {
+                text-align: center;
+                width: auto;
+              }
+            }
+
+            .comment-section:hover {
+              background-color: white;
+
+              .comment-content {
+                color: #007cce;
+              }
+
+              .comment-icon {
+                color: #007cce;
+              }
+
+            }
+
+            .detail-icon {
+              cursor: pointer;
+            }
+
+            .detail-icon:hover {
+              color: white;
+            }
+
+          }
+
+          .comment {
+            display: inline-block;
+            font-size: 20px;
+
+            font-weight: 400;
+          }
+        }
+
+        .number {
+          display: inline-block;
+          font-size: 40px;
+          color: black;
+          font-weight: bold;
+          margin-right: 18px;
+          margin-left: 9px;
+          vertical-align: middle;
+        }
+
+        .arrow-button {
+          display: inline-block;
+          width: 22px;
+          height: 22px;
+          border: 2px solid white;
+          background-color: white;
+          margin-right: 10px;
+          border-radius: 50%;
+
+          .arrow-button-icon {
+            color: #007cce;
+          }
+        }
+      }
+
+      .main-post-percentage-container {
+        display: flex;
+        align-items: center;
+
+        .percentage-content {
+          display: inline-block;
+          color: black;
+          font-weight: bold;
+          margin-right: 22px;
+          width: 40px;
+          font-size: 26px;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+.m5 {
+  margin-left: 5px;
+}
+
+.m10 {
+  margin-left: 10px;
+}
+
+.m30 {
+  margin-left: 30px;
+}

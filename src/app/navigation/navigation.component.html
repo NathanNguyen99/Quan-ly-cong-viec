@@ -1,0 +1,91 @@
+<header class="top-bar-nav">
+    <div
+      class="menu-section-container"
+      ng-sidebar-content
+      (click)="_toggleSidebar()"
+      style="display: flex"
+    >
+      <div class="menu-button" style="cursor: pointer">
+        <mat-icon class="menu-icon">{{ _opened ? "close" : "menu" }}</mat-icon>
+      </div>
+      <div style="display: block">
+        <div class="active-section">
+          {{ _opened ? "Close" : "Menu" }}
+          <div class="triangle-bottom-right"></div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-wrapper mb24">
+      <div style="height: 100%; display: table-cell; vertical-align: bottom">
+        <img class="logo" src="../../assets/oryza.png" alt="" />
+        <div style="font-weight: bold; margin-left: auto; margin-right: auto">
+          Phần mềm quản lý công việc
+        </div>
+      </div>
+    </div>
+    <div class="user-control">
+      <div class="user-icon-wrapper" style="width: 30px">
+        <div class="user-icon-container">
+          <mat-icon>notifications_none</mat-icon>
+        </div>
+      </div>
+      <!-- user icon -->
+      <div class="user-icon-wrapper">
+        <div class="user-icon-container">
+          <div mat-button [matMenuTriggerFor]="menu" href="">
+            <img class="user-icon" src="../../assets/messi.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/reset'">
+          <mat-icon>account_circle</mat-icon>
+          <span>Đổi mật khẩu</span>
+        </button>
+        <!-- <button mat-menu-item [routerLink]=" ['./logout'] ">
+          <mat-icon>power_settings_new</mat-icon>
+         <span>Log out</span>
+        </button> -->
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>power_settings_new</mat-icon>
+          <span>Log out</span>
+        </button>
+      </mat-menu>
+    </div>
+  </header>
+  
+  <ng-sidebar-container>
+    <ng-sidebar [opened]="_opened">
+      <div class="menu-items">
+        <a href="" class="nav-item"
+          >Dashboard
+          <mat-icon class="right-arrow">arrow_forward</mat-icon>
+        </a>
+        <a href="" class="nav-item"
+          >Nghiệp vụ
+          <mat-icon class="right-arrow">arrow_forward</mat-icon>
+        </a>
+        <a href="" class="nav-item"
+          >Danh mục
+          <mat-icon class="right-arrow">arrow_forward</mat-icon>
+        </a>
+        <a href="" class="nav-item"
+          >Hệ thống
+          <mat-icon class="right-arrow">arrow_forward</mat-icon>
+        </a>
+      </div>
+    </ng-sidebar>
+    <div ng-sidebar-content>
+      <router-outlet></router-outlet>
+    </div>
+  </ng-sidebar-container>
+  
+  <div class="chat-widget-controller secondary" role="button">
+    <div class="widget-controller-icon">
+      <div class="widget-controller-icon--active">
+        <mat-icon style="color: white;">chat_bubble</mat-icon>
+      </div>
+    </div>
+  
+  </div>
+  
