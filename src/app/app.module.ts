@@ -28,7 +28,8 @@ import { AlertService } from './Shared/Services/alert.service';
 import { UserService } from './Shared/Services/user.service';
 import { MainPostComponent } from './main-post/main-post.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateAdapter, NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CustomAdapter, CustomDateParserFormatter } from './Shared/Services/customday.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +66,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AlertService,
     UserService,
     AuthGuard,
-    AppConfig
+    AppConfig,
+    {provide: NgbDateAdapter, useClass: CustomAdapter},
+    {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
   ],
   bootstrap: [AppComponent]
 })

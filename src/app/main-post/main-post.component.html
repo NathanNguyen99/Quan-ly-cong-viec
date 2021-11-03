@@ -36,14 +36,14 @@
             </div>
 
             <div class="time-section m30" style="text-align: center">
-              <span>Ngày bắt đầu</span><br />
+              <span>Từ ngày</span><br />
              
               <input
-                class="form-control"
-                placeholder="yyyy-mm-dd"
+                class="date-control"
+                placeholder="dd-mm-yyyy"
                 style="z-index: 30"
                 name="dp"
-                [(ngModel)]="model"
+                [(ngModel)]="fromDate"
                 ngbDatepicker
                 #d="ngbDatepicker"
                 (click)="d.toggle()"
@@ -51,11 +51,20 @@
             </div>
             <div class="time-section m30" style="text-align: center">
               <span>Đến ngày</span><br />
-              <span>18/11/21</span>
+              <input
+                class="date-control"                
+                placeholder="dd-mm-yyyy"
+                style="z-index: 30"
+                name="dp"
+                [(ngModel)]="toDate"
+                ngbDatepicker
+                #e="ngbDatepicker"
+                (click)="e.toggle()"
+              > 
             </div>
             <div class="time-section m30" style="text-align: center">
               <span>Ngày còn lại</span><br />
-              <span>2</span>
+              <span style="padding: 1px 2px;">{{calculateDiff() }}</span>
             </div>
           </div>
           <div class="down-content-container">
@@ -75,7 +84,7 @@
   </div>
 </div>
 
-<div
+<!-- <div
   class="main-post"
   style="margin-top: 1.5rem; margin-left: 1rem; margin-right: 1rem"
 >
@@ -207,4 +216,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

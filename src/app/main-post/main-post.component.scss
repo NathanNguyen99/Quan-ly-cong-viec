@@ -15,7 +15,6 @@
     box-shadow: none;
     border: solid 1px #eeeeee;
     transform: translateY(2px);
-    
 
     .main-post-wrapper {
       display: flex;
@@ -53,6 +52,7 @@
               border-radius: 10px;
               padding: 2px 5px 2px 5px;
               cursor: pointer;
+              margin-bottom: 10px;
             }
 
             .head-section:hover {
@@ -82,26 +82,45 @@
             }
 
             .comment-section {
-            
               display: inline-block;
               border-radius: 10px;
               padding: 0px 5px 0px 5px;
               cursor: pointer;
               height: auto;
+              margin-bottom: 30px;
               //background-color: white;
 
               .comment-icon {
                 color: black;
-                
               }
             }
 
             .time-section {
-              width: auto;
+              width: 100px;
 
-              input {
+              .date-control {
+                cursor: pointer;
                 text-align: center;
                 width: auto;
+                border-color: transparent transparent;                    
+                appearance: none;
+                border-radius: 0;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: none;
+                display: block;
+                //min-height: 32px;
+                outline: none;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-shadow: none;
+                background-color: #007cce;
+                transition: all 0.15s ease-in-out;
+                width: 100%;
+              }
+
+              ::placeholder {
+                color: black;
               }
             }
 
@@ -115,7 +134,6 @@
               .comment-icon {
                 color: #007cce;
               }
-
             }
 
             .detail-icon {
@@ -125,7 +143,6 @@
             .detail-icon:hover {
               color: white;
             }
-
           }
 
           .comment {
