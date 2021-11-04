@@ -1,0 +1,87 @@
+<div class="sub-post" style="margin-top: 1.5rem; margin-left: 1rem">
+  <div class="sub-post-container">
+    <div class="sub-post-wrapper">
+      <div class="sub-post-content-container">
+        <div class="inside-content-container">
+          <div class="up-content-container">
+            <div class="head-section">
+              <span class="head">
+                <fa-icon (click)="openChildComponent()" [icon]="shoud_open ? faChevronCircleDown : faChevronCircleRight"></fa-icon>
+                Phòng R & D
+              </span>
+              <span class="number-of-task m5">3 công việc</span>
+            </div>
+          </div>
+          <div class="down-content-container">
+            <img class="user-icon ml1" src="../../assets/messi.jpg" alt="" />
+            <img class="user-icon ml1" src="../../assets/messi.jpg" alt="" />
+            <span class="number-of-task ml1">10 người theo dõi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-sub-post-content-container">
+        <div class="task-container">
+          <div class="task-content-container">
+            <div style="text-align: center">
+              <span style="font-size: large">3</span><br />
+              <span>CV còn lại</span>
+            </div>
+            <div style="text-align: center">
+              <span style="font-size: large">2</span><br />
+              <span
+                ><mat-icon style="font-size: inherit">check</mat-icon>CV hoàn
+                thành</span
+              >
+            </div>
+            <div style="text-align: center">
+              <span style="font-size: large">3</span><br />
+              <span>Ngày còn lại</span>
+            </div>
+          </div>
+          <div class="task-progress-container">
+            <p style="width: 100%">
+              <ngb-progressbar
+                type="success"
+                textType="white"
+                [value]="50"
+                [showValue]="true"
+              ></ngb-progressbar>
+            </p>
+          </div>
+        </div>
+        <div class="time-section-container">
+          <div class="time-section ml1" style="text-align: center">
+            <span style="font-size: large">TỪ NGÀY</span><br />
+            <input
+              class="date-control"
+              placeholder="dd-mm-yyyy"
+              style="z-index: 100000"
+              name="dp"
+              [(ngModel)]="fromDate"
+              ngbDatepicker
+              #d="ngbDatepicker"
+              (click)="d.toggle()"
+            />
+          </div>
+          <div class="time-section mr1" style="text-align: center">
+            <span style="font-size: large">ĐẾN NGÀY</span><br />
+            <input
+              class="date-control"
+              placeholder="dd-mm-yyyy"
+              style="z-index: 100000"
+              name="dp"
+              [(ngModel)]="toDate"
+              ngbDatepicker
+              #e="ngbDatepicker"
+              (click)="e.toggle()"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="shoud_open">
+    <app-min-post></app-min-post>
+  </div>
+</div>

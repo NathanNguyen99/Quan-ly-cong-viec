@@ -30,6 +30,9 @@ import { MainPostComponent } from './main-post/main-post.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbDateAdapter, NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomAdapter, CustomDateParserFormatter } from './Shared/Services/customday.service';
+import { SubPostComponent } from './sub-post/sub-post.component';
+import { MinPostComponent } from './min-post/min-post.component';
+import { TaskComponent } from './task/task.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,10 @@ import { CustomAdapter, CustomDateParserFormatter } from './Shared/Services/cust
     NavigationComponent,
     ChangePasswordComponent,
     AlertComponent,
-    MainPostComponent
+    MainPostComponent,
+    SubPostComponent,
+    MinPostComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

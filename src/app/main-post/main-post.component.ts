@@ -3,7 +3,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import {
   faExclamationCircle,
-  faComment,
+  faComment, faChevronCircleRight, faChevronCircleDown
 } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-main-post',
@@ -11,8 +11,11 @@ import {
   styleUrls: ['./main-post.component.scss'],
 })
 export class MainPostComponent {
+  // Icon
   faExclamationCircle = faExclamationCircle;
   faComment = faComment;
+  faChevronCircleRight = faChevronCircleRight;
+  faChevronCircleDown = faChevronCircleDown;
 
   date!: { year: number; month: number };
   disabled = true;
@@ -20,6 +23,8 @@ export class MainPostComponent {
   fromDate!: NgbDateStruct;
   toDate!: NgbDateStruct;
 
+
+  // Function to calculate days left
   calculateDiff() {
     if(this.fromDate == null || this.toDate == null) {
       return "Không"
@@ -29,6 +34,11 @@ export class MainPostComponent {
     return discharge.diff(admission, 'days');
   }
 
+  public shoud_open = false;
+
+  openChildComponent(){
+    this.shoud_open = !this.shoud_open;
+  }
   constructor() {}
 
   ngOnInit(): void {}

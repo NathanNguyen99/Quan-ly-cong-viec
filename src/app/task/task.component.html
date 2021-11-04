@@ -1,0 +1,37 @@
+<div style="background-color: white; margin-left: 32px; border-radius: 4px">
+  <div class="task-content-container">
+    <!-- <div class="head-section" style="color: #6bc950">
+        <fa-icon [icon]="faSquare"></fa-icon>
+    </div> -->
+
+  </div>
+  <div class="right-task-content-container">
+    <span style="width: 140px" class="title ">NGƯỜI THEO DÕI</span>
+    <span class="status-title ml1" style="background-color: #6BC950;">50%</span>
+    <span class="status-title ml1" style="background-color: #6BC950;">HOÀN THÀNH</span>
+    <div class="time-section ml1" style="text-align: center">
+        <input
+          class="date-control"
+          placeholder="dd-mm-yyyy"
+          style="z-index: 100000"
+          name="dp"
+          [(ngModel)]="fromDate"
+          ngbDatepicker
+          #d="ngbDatepicker"
+          (click)="d.toggle()"
+        />
+    </div>
+    <div class="time-section mr1" style="text-align: center">
+        <input
+          class="date-control"
+          placeholder="dd-mm-yyyy"
+          style="z-index: 100000"
+          name="dp"
+          [(ngModel)]="toDate"
+          ngbDatepicker
+          #e="ngbDatepicker"
+          (click)="d.toggle()"
+        />
+    </div>
+  </div>
+</div>

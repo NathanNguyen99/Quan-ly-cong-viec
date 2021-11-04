@@ -4,6 +4,7 @@
   margin: auto;
   z-index: -1;
 
+
   .main-post-container {
     width: 100%;
     border-radius: 4px;
@@ -13,7 +14,7 @@
     box-sizing: border-box;
     transition: unset;
     box-shadow: none;
-    border: solid 1px #eeeeee;
+    border: solid 1px #979797;
     transform: translateY(2px);
 
     .main-post-wrapper {
@@ -53,6 +54,7 @@
               padding: 2px 5px 2px 5px;
               cursor: pointer;
               margin-bottom: 10px;
+              transition: all 0.15s ease-in-out;
             }
 
             .head-section:hover {
@@ -102,7 +104,7 @@
                 cursor: pointer;
                 text-align: center;
                 width: auto;
-                border-color: transparent transparent;                    
+                border-color: transparent transparent;
                 appearance: none;
                 border-radius: 0;
                 border-style: solid;
@@ -117,6 +119,11 @@
                 background-color: #007cce;
                 transition: all 0.15s ease-in-out;
                 width: 100%;
+                border-radius: 10px;
+              }
+
+              .date-control:hover {
+                background-color: white;
               }
 
               ::placeholder {
@@ -138,6 +145,7 @@
 
             .detail-icon {
               cursor: pointer;
+              transition: all 0.15s ease-in-out;
             }
 
             .detail-icon:hover {
@@ -148,7 +156,7 @@
           .comment {
             display: inline-block;
             font-size: 20px;
-
+            transition: all 0.15s ease-in-out;
             font-weight: 400;
           }
         }
@@ -165,8 +173,8 @@
 
         .arrow-button {
           display: inline-block;
-          width: 22px;
-          height: 22px;
+          width: 24px;
+          height: 24px;
           border: 2px solid white;
           background-color: white;
           margin-right: 10px;
@@ -196,14 +204,7 @@
   }
 }
 
-.m5 {
-  margin-left: 5px;
+main-post::before {
+  background-color: #EEEEEE;
 }
 
-.m10 {
-  margin-left: 10px;
-}
-
-.m30 {
-  margin-left: 30px;
-}

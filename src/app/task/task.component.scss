@@ -1,0 +1,75 @@
+.task-content-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  overflow-wrap: break-word;
+  width: 50%;
+  height: auto;
+
+  .head-section {
+    display: inline-block;
+    border-radius: 4px;
+    cursor: pointer;
+    //padding: 2px 5px 2px 5px;
+  }
+}
+
+.right-task-content-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: relative;
+  overflow-wrap: break-word;
+  height: auto;
+
+  .title {
+    font-size: large;
+    text-align: center;
+    width: 100px;
+    //margin-bottom: 10px;
+  }
+
+  .status-title {
+    font-size: large;
+    text-align: center;
+    width: 150px;
+    //margin-bottom: 10px;
+    padding: 0.5rem 0px;
+  }
+
+  .status {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .time-section {
+    display: inline-block;
+    width: 100px;
+  }
+
+  .date-control {
+    cursor: pointer;
+    text-align: center;
+    width: auto;
+    border-color: transparent transparent;
+    appearance: none;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: none;
+    display: block;
+    //min-height: 32px;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: none;
+
+    transition: all 0.15s ease-in-out;
+    width: 100%;
+  }
+
+  ::placeholder {
+    color: black;
+  }
+}
