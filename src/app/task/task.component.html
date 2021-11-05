@@ -1,37 +1,67 @@
-<div style="background-color: white; margin-left: 32px; border-radius: 4px">
-  <div class="task-content-container">
-    <!-- <div class="head-section" style="color: #6bc950">
-        <fa-icon [icon]="faSquare"></fa-icon>
-    </div> -->
-
-  </div>
-  <div class="right-task-content-container">
-    <span style="width: 140px" class="title ">NGƯỜI THEO DÕI</span>
-    <span class="status-title ml1" style="background-color: #6BC950;">50%</span>
-    <span class="status-title ml1" style="background-color: #6BC950;">HOÀN THÀNH</span>
-    <div class="time-section ml1" style="text-align: center">
-        <input
-          class="date-control"
-          placeholder="dd-mm-yyyy"
-          style="z-index: 100000"
-          name="dp"
-          [(ngModel)]="fromDate"
-          ngbDatepicker
-          #d="ngbDatepicker"
-          (click)="d.toggle()"
-        />
-    </div>
-    <div class="time-section mr1" style="text-align: center">
-        <input
-          class="date-control"
-          placeholder="dd-mm-yyyy"
-          style="z-index: 100000"
-          name="dp"
-          [(ngModel)]="toDate"
-          ngbDatepicker
-          #e="ngbDatepicker"
-          (click)="d.toggle()"
-        />
+<div
+  class="task"
+  style="background-color: white; margin-left: 32px; border-radius: 4px"
+>
+  <div class="task-container">
+    <div class="task-wrapper">
+      <div class="task-content-container">
+        <span
+          ><fa-icon class="mr1" [icon]="faSquare"></fa-icon>Quản lý dự án</span
+        >
+        <!-- <div class="head-section">
+            <span class="head"> Phòng R & D </span>
+            <span class="number-of-task m5">3 công việc</span>
+          </div> -->
+      </div>
+      <div class="right-task-content-container">
+        <div style="width: 150px">
+          <img class="user-icon" src="../../assets/messi.jpg" alt="" />
+          <img class="user-icon ml0-5" src="../../assets/messi.jpg" alt="" />
+          <img class="user-icon ml0-5" src="../../assets/messi.jpg" alt="" />
+          <span class="ml0-5">+2</span>
+        </div>
+        <div class="col ml1" style="padding-right: 0px;">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>ĐANG THỰC HIỆN</button>
+            <div ngbDropdownMenu container="body" style="z-index: 100000 !important;" aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem>ĐANG THỰC HIỆN</button>
+              <button ngbDropdownItem>TRỄ HẠN</button>
+              <button ngbDropdownItem>HOÀN THÀNH</button>
+            </div>    
+          </div>
+        </div>
+        <!-- <div class="head-section ml1" style="background-color: #6bc950">
+          <span>HOÀN THÀNH</span>
+        </div> -->  
+        <div class="time-section ml1" style="text-align: center">
+          <input
+            class="date-control"
+            placeholder="dd-mm-yyyy"
+            container="body"
+            style="z-index: 100000"
+            name="dp"
+            [(ngModel)]="fromDate"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            (click)="d.toggle()"
+          />
+        </div>
+        <div class="time-section mr1" style="text-align: center">
+          <input
+            class="date-control"
+            placeholder="dd-mm-yyyy"
+            container="body"
+            style="z-index: 100000"
+            name="dp"
+            [(ngModel)]="toDate"
+            ngbDatepicker
+            #e="ngbDatepicker"
+            (click)="e.toggle()"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+

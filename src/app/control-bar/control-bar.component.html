@@ -1,0 +1,76 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Tạo kế hoạch mới</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Tên kế hoạch</label>
+        <div class="input-group">
+          <input
+            id="dateOfBirth"
+            class="form-control"
+            placeholder="Kế hoạch"
+            name="dp"
+            ngbDatepicker
+            #dp="ngbDatepicker"
+          />
+        </div>
+      </div>
+      <div class="time-wrapper">
+        <div class="time-container">
+          <span>Từ ngày</span><br>
+        </div>
+        <div class="time-container">
+          <span>Từ ngày</span>
+        </div>
+      </div>
+      <div class="time-wrapper">
+        <div class="time-container">
+          <div class="input-group">
+            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="a" ngbDatepicker #a="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="a.toggle()" type="button"><fa-icon [icon]="faCalendarCheck"></fa-icon></button>
+            </div>
+          </div>
+        </div>
+        <div class="time-container">
+          <div class="input-group">
+            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="b" ngbDatepicker #b="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="b.toggle()" type="button"><fa-icon [icon]="faCalendarCheck"></fa-icon></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer" style="border: none">
+    <button
+      type="button"
+      class="btn cancel-btn"
+      (click)="modal.close('Save click')"
+    >
+      Hủy
+    </button>
+    <button
+      type="button"
+      class="btn save-btn"
+      (click)="modal.close('Save click')"
+    >
+      Tạo kế hoạch mới
+    </button>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">
+  Tạo kế hoạch mới
+</button>

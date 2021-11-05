@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import {
   faExclamationCircle,
@@ -23,6 +24,8 @@ export class MainPostComponent {
   fromDate!: NgbDateStruct;
   toDate!: NgbDateStruct;
 
+  constructor(private modalService: NgbModal) {}
+
 
   // Function to calculate days left
   calculateDiff() {
@@ -39,7 +42,7 @@ export class MainPostComponent {
   openChildComponent(){
     this.shoud_open = !this.shoud_open;
   }
-  constructor() {}
+  
 
   ngOnInit(): void {}
 }

@@ -33,6 +33,11 @@ import { CustomAdapter, CustomDateParserFormatter } from './Shared/Services/cust
 import { SubPostComponent } from './sub-post/sub-post.component';
 import { MinPostComponent } from './min-post/min-post.component';
 import { TaskComponent } from './task/task.component';
+import { ControlBarComponent } from './control-bar/control-bar.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DataService } from './Shared/Services/data.service';
+import { MainPostDetailComponent } from './main-post-detail/main-post-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +50,10 @@ import { TaskComponent } from './task/task.component';
     MainPostComponent,
     SubPostComponent,
     MinPostComponent,
-    TaskComponent
+    TaskComponent,
+    ControlBarComponent,
+    MainPostDetailComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -62,7 +70,8 @@ import { TaskComponent } from './task/task.component';
     HttpClientModule,
     MatDialogModule,
     FontAwesomeModule,
-    NgbModule
+    NgbModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     TokenService,
@@ -73,6 +82,7 @@ import { TaskComponent } from './task/task.component';
     UserService,
     AuthGuard,
     AppConfig,
+    DataService,
     {provide: NgbDateAdapter, useClass: CustomAdapter},
     {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
   ],

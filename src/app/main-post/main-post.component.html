@@ -1,7 +1,7 @@
-<div style="background-color: #eeeeee; height: 100vh">
+<div style="height: 100vh">
   <div
     class="main-post"
-    style="margin-top: 1.5rem; margin-left: 1rem; margin-right: 1rem"
+    style="margin-top: 1.5rem; margin-left: 1rem; margin-right: 1rem;height: 100vh "
   >
     <div
       class="main-post-container"
@@ -24,6 +24,7 @@
               <fa-icon
                 class="detail-icon m10"
                 [icon]="faExclamationCircle"
+        
               ></fa-icon>
               <div class="comment-section m10">
                 <fa-icon
@@ -40,7 +41,8 @@
                 <input
                   class="date-control"
                   placeholder="dd-mm-yyyy"
-                  style="z-index: 30"
+                  container="body"
+                  style="position: relative; z-index: 100000 !important;"
                   name="dp"
                   [(ngModel)]="fromDate"
                   ngbDatepicker
@@ -53,6 +55,7 @@
                 <input
                   class="date-control"
                   placeholder="dd-mm-yyyy"
+                  container="body"
                   style="z-index: 30"
                   name="dp"
                   [(ngModel)]="toDate"
