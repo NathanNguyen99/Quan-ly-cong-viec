@@ -68,6 +68,9 @@ body {
   margin-left: 30px;
 }
 
+$doingState-color: #2BD9FE;
+$completeState-color: #6bc950;
+$alertState-color: #DB504A;
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

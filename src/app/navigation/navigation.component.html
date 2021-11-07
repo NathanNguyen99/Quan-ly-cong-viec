@@ -2,7 +2,7 @@
     <div
       class="menu-section-container"
       ng-sidebar-content
-      (click)="_toggleSidebar()"
+      (click)="_toggleSidebar();"
       style="display: flex"
     >
       <div class="menu-button" style="cursor: pointer">
@@ -15,10 +15,10 @@
         </div>
       </div>
     </div>
-    <div class="logo-wrapper mb24">
+    <div class="logo-wrapper mb24" [routerLink]="'/home/dashboard'">
       <div style="height: 100%; display: table-cell; vertical-align: bottom">
         <img class="logo" src="../../assets/oryza.png" alt="" />
-        <div style="font-weight: bold; margin-left: auto; margin-right: auto">
+        <div class="" style="margin-top: 3.5rem;display:block;font-weight: bold; margin-left: auto; margin-right: auto">
           Phần mềm quản lý công việc
         </div>
       </div>
@@ -53,28 +53,11 @@
       </mat-menu>
     </div>
   </header>
-  
 
   <ng-sidebar-container style="background-color: #eeeeee">
     <ng-sidebar [opened]="_opened">
-      <div class="menu-items">
-        <a href="" class="nav-item"
-          >Dashboard
-          <mat-icon class="right-arrow">arrow_forward</mat-icon>
-        </a>
-        <a href="" class="nav-item"
-          >Nghiệp vụ
-          <mat-icon class="right-arrow">arrow_forward</mat-icon>
-        </a>
-        <a href="" class="nav-item"
-          >Danh mục
-          <mat-icon class="right-arrow">arrow_forward</mat-icon>
-        </a>
-        <a href="" class="nav-item"
-          >Hệ thống
-          <mat-icon class="right-arrow">arrow_forward</mat-icon>
-        </a>
-      </div>
+      <ng-material-multilevel-menu class="menu-items" [configuration]='config' [items]='appitems' (selectedItem)="selectedItem($event)">
+      </ng-material-multilevel-menu>
     </ng-sidebar>
     <div ng-sidebar-content style="background-color: #eeeeee">
       <app-control-bar></app-control-bar>

@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
+import { MultilevelMenuService, NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { LoginComponent } from './login/login.component';
 import { TokenService } from './Shared/Services/token.service';
 import { baseService } from './Shared/Services/base.service';
@@ -18,6 +18,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatMenuModule} from '@angular/material/menu';
 import { Auth } from './Auth/auth';
 import { HttpClientModule } from '@angular/common/http'
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { AppConfig } from './Config/config';
 import { AuthGuard } from './Auth/canActivateAuthGuard';
 import { NavService } from './Shared/Services/nav.service';
@@ -37,7 +38,7 @@ import { ControlBarComponent } from './control-bar/control-bar.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DataService } from './Shared/Services/data.service';
 import { MainPostDetailComponent } from './main-post-detail/main-post-detail.component';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import { MainPostDetailComponent } from './main-post-detail/main-post-detail.com
     SubPostComponent,
     MinPostComponent,
     TaskComponent,
+
     ControlBarComponent,
     MainPostDetailComponent,
 
@@ -58,6 +60,7 @@ import { MainPostDetailComponent } from './main-post-detail/main-post-detail.com
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatSidenavModule,
     SidebarModule.forRoot(),
     NoopAnimationsModule,
     MatIconModule,
@@ -71,9 +74,11 @@ import { MainPostDetailComponent } from './main-post-detail/main-post-detail.com
     MatDialogModule,
     FontAwesomeModule,
     NgbModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatProgressBarModule
   ],
   providers: [
+    MultilevelMenuService,
     TokenService,
     baseService,
     Auth,

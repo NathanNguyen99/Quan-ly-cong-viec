@@ -1,16 +1,14 @@
-import { Component,ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NavigationEnd } from '@angular/router';
 // import { Subscription } from 'rxjs';
 // import { NavService } from './Shared/Services/nav.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent{
   
 
-  constructor() {
-    
-  }
-
+  constructor() {}
 }

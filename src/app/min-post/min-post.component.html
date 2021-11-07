@@ -26,6 +26,63 @@
     </div>
   </div>
 </div>
+<div class="min-post" style="margin-top: 1.5rem; margin-left: 1rem">
+  <div class="min-post-container">
+    <div class="min-post-wrapper">
+      <div class="min-post-content-container">
+        <div class="head-section" style="color: #DB504A; font-size: 22px">
+          <fa-icon
+            (click)="openChildComponent()"
+            [icon]="shoud_open ? faChevronCircleDown : faChevronCircleRight"
+          ></fa-icon>
+        </div>
+
+        <div class="head-section" style="background-color: #DB504A">
+          <span class="head"> TRỄ HẠN</span>
+          <span class="number-of-task m5">3 công việc</span>
+        </div>
+      </div>
+      <div class="right-min-post-content-container">
+        <span style="width: 150px" class="title ml1">NGƯỜI THỰC HIỆN</span>
+        <span class="status-title ml1">TRẠNG THÁI</span>
+        <span class="title ml1">TỪ NGÀY</span>
+        <span class="title mr1">ĐẾN NGÀY</span>
+      </div>
+    </div>
+    <div *ngIf="shoud_open">
+      <app-task></app-task>
+    </div>
+  </div>
+</div>
+<div class="min-post" style="margin-top: 1.5rem; margin-left: 1rem">
+  <div class="min-post-container">
+    <div class="min-post-wrapper">
+      <div class="min-post-content-container">
+        <div class="head-section" style="color: #2BD9FE; font-size: 22px">
+          <fa-icon
+            (click)="openChildComponent()"
+            [icon]="shoud_open ? faChevronCircleDown : faChevronCircleRight"
+          ></fa-icon>
+        </div>
+
+        <div class="head-section" style="background-color: #2BD9FE">
+          <span class="head">ĐANG THỰC HIỆN</span>
+          <span class="number-of-task m5">3 công việc</span>
+        </div>
+      </div>
+      <div class="right-min-post-content-container">
+        <span style="width: 150px" class="title ml1">NGƯỜI THỰC HIỆN</span>
+        <span class="status-title ml1">TRẠNG THÁI</span>
+        <span class="title ml1">TỪ NGÀY</span>
+        <span class="title mr1">ĐẾN NGÀY</span>
+      </div>
+    </div>
+    <div *ngIf="shoud_open">
+      <app-task></app-task>
+    </div>
+  </div>
+</div>
+
 <!-- 
 <div class="min-post" style="margin-top: 1.5rem; margin-left: 1rem">
   <div class="min-post-container">
