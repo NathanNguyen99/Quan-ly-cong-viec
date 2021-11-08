@@ -1,4 +1,6 @@
+import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Auth } from '../Auth/auth';
 import { NavService } from '../Shared/Services/nav.service';
 
@@ -12,6 +14,8 @@ export class NavigationComponent {
   constructor(public navService: NavService, public auth: Auth) {
   }
 
+
+
   _opened: boolean = false;
 
   _toggleSidebar() {
@@ -24,5 +28,44 @@ export class NavigationComponent {
   logout() {
     this.auth.logout();    
   }
+
+  config = {
+    paddingAtStart: true,
+    classname: 'menu-items',
+    selectedListFontColor: '#007cce',
+  };
+
+  selectedItem(selectedData: any) {
+    this._toggleSidebar()
+  }
+
+  
+  appitems = [
+    {
+      label: 'Dashboard',
+      link: '/home/dashboard'
+    },
+    {
+      label: 'Nghiệp vụ',
+      items: [
+        {
+          label: 'Item 2.1',
+          link: '/item-2-1',
+        },
+        {
+          label: 'Item 2.2',
+          link: '/item-2-2',
+        }
+      ]
+    },
+    {
+      label: 'Danh mục',
+      link: '/item-3',
+    },
+    {
+      label: 'Hệ thống',
+      link: '/item-4',
+    }
+  ];
 
 }

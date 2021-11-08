@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
+import { MultilevelMenuService, NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { LoginComponent } from './login/login.component';
 import { TokenService } from './Shared/Services/token.service';
 import { baseService } from './Shared/Services/base.service';
@@ -18,6 +18,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatMenuModule} from '@angular/material/menu';
 import { Auth } from './Auth/auth';
 import { HttpClientModule } from '@angular/common/http'
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { AppConfig } from './Config/config';
 import { AuthGuard } from './Auth/canActivateAuthGuard';
 import { NavService } from './Shared/Services/nav.service';
@@ -38,6 +39,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DataService } from './Shared/Services/data.service';
 import { MainPostDetailComponent } from './main-post-detail/main-post-detail.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { SubProductService } from './Shared/Services/sub-product.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +54,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     SubPostComponent,
     MinPostComponent,
     TaskComponent,
+
     ControlBarComponent,
     MainPostDetailComponent,
 
@@ -58,6 +62,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatSidenavModule,
     SidebarModule.forRoot(),
     NoopAnimationsModule,
     MatIconModule,
@@ -72,15 +77,18 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     FontAwesomeModule,
     NgbModule,
     Ng2SearchPipeModule,
-    HttpClientInMemoryWebApiModule.forRoot(DataService)
+    HttpClientInMemoryWebApiModule.forRoot(DataService),
+    MatProgressBarModule
   ],
   providers: [
+    MultilevelMenuService,
     TokenService,
     baseService,
     Auth,
     NavService,
     AlertService,
     UserService,
+    SubProductService,
     AuthGuard,
     AppConfig,
     {provide: NgbDateAdapter, useClass: CustomAdapter},

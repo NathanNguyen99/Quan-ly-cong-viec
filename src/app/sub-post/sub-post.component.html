@@ -1,4 +1,4 @@
-<div class="sub-post" style="margin-top: 1.5rem; margin-left: 1rem">
+<div class="sub-post" *ngIf="this.subProductItem" style="margin-top: 1.5rem; margin-left: 1rem">
   <div class="sub-post-container">
     <div class="sub-post-wrapper">
       <div class="sub-post-content-container">
@@ -7,9 +7,9 @@
             <div class="head-section">
               <span class="head">
                 <fa-icon (click)="openChildComponent()" [icon]="shoud_open ? faChevronCircleDown : faChevronCircleRight"></fa-icon>
-                Phòng R & D
+                {{this.subProductItem.name}}
               </span>
-              <span class="number-of-task m5">3 công việc</span>
+              <span class="number-of-task m5">{{this.subProductItem.totalTask}} công việc</span>
             </div>
           </div>
           <div class="down-content-container">
@@ -24,18 +24,18 @@
         <div class="task-container">
           <div class="task-content-container">
             <div style="text-align: center">
-              <span style="font-size: large">3</span><br />
+              <span style="font-size: large">{{this.subProductItem.totalTask - this.subProductItem.doneTask}}</span><br />
               <span>CV còn lại</span>
             </div>
             <div style="text-align: center">
-              <span style="font-size: large">2</span><br />
+              <span style="font-size: large">{{this.subProductItem.doneTask}}</span><br />
               <span
                 ><mat-icon style="font-size: inherit">check</mat-icon>CV hoàn
                 thành</span
               >
             </div>
             <div style="text-align: center">
-              <span style="font-size: large">3</span><br />
+              <span style="font-size: large"></span><br />
               <span>Ngày còn lại</span>
             </div>
           </div>
@@ -44,7 +44,7 @@
               <ngb-progressbar
                 type="success"
                 textType="white"
-                [value]="50"
+                [value]="getPercentage()"
                 [showValue]="true"
               ></ngb-progressbar>
             </p>
@@ -56,7 +56,7 @@
             <input
               class="date-control"
               container="body"
-              placeholder="dd-mm-yyyy"
+              placeholder={{this.subProductItem.fromDate}}
               style="position: relative; z-index: 100000;"
               name="dp"
               [(ngModel)]="fromDate"
@@ -70,7 +70,7 @@
             <input
               class="date-control"
               container="body"
-              placeholder="dd-mm-yyyy"
+              placeholder={{this.subProductItem.toDate}}
               style="position: relative; z-index: 100000;"
               name="dp"
               [(ngModel)]="toDate"

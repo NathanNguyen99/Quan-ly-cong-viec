@@ -9,7 +9,7 @@
     >
       <div
         class="main-post-container"
-        style="background: linear-gradient(to right, #007cce 85%, white 15%)"
+        style="background: linear-gradient(to right, #2BD9FE 85%, white 15%)"
       >
         <div class="main-post-wrapper">
           <div class="main-post-content-container">
@@ -48,30 +48,30 @@
 
                   <input
                     class="date-control"
-                    placeholder="{{ productItem.fromDate }}"
+                    placeholder=""                   
                     container="body"
                     style="position: relative; z-index: 100000 !important"
                     name="dp"
                     [(ngModel)]="fromDate"
-                    ngbDatepicker
+                    ngbDatepicker                 
+                    [startDate]="startDateOfFromDate()"
                     #d="ngbDatepicker"
-                    (click)="d.toggle()"
+                    (click)="d.toggle()"                    
                   />
                 </div>
                 <div class="time-section m30" style="text-align: center">
                   <span>Đến ngày</span><br />
                   <input
                     class="date-control"
-                    placeholder="{{ productItem.toDate }}"
-                    value="{{ productItem.toDate }}"
+                    placeholder=""
                     container="body"
                     style="z-index: 30"
                     name="dp" 
                     [(ngModel)]="toDate"
                     ngbDatepicker
                     #e="ngbDatepicker"
-                    
-                    (click)="e.toggle(); e.navigateTo()"
+                    [startDate]="startDateOfToDate()"                   
+                    (click)="e.toggle();"
                   />
                 </div>
                 <div class="time-section m30" style="text-align: center">
@@ -95,7 +95,7 @@
         </div>
       </div>
       <div *ngIf="shoud_open">
-        <app-sub-post></app-sub-post>
+        <app-sub-post *ngFor="let subproduct of subproducts" (setSubProductEdit)="setProductEdit($event)" [subProductItem]="subproduct"></app-sub-post>
       </div>
     </div>
 </div>

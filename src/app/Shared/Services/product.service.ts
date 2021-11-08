@@ -3,15 +3,16 @@ import { Product } from '../Models/product.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { Task } from '../Models/task.model';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private productsUrl = 'api/products/';
+  private productsUrl = 'api/';
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl).pipe(
+    return this.http.get<Product[]>(this.productsUrl + 'products/').pipe(
       retry(2),
       catchError((error: HttpErrorResponse) => {
         console.error(error);
@@ -36,5 +37,25 @@ export class ProductService {
 
   deleteProduct(id: number): Observable<any> {
     return this.http.delete(this.productsUrl + id);
+  }
+
+  getSubProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.productsUrl + 'subproducts/').pipe(
+      retry(2),
+      catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        return throwError(error);
+      })
+    );
+  }
+
+  getTask(taskname: string): Observable<Task[]> {
+    return this.http.get<Task[]>(this.productsUrl + taskname).pipe(
+      retry(2),
+      catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        return throwError(error);
+      })
+    );
   }
 }

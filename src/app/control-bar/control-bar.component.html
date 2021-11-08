@@ -1,13 +1,14 @@
 <ng-template #content let-modal>
-  <div class="modal-header">
+  <div class="modal-header" style="background-color: #EFF0F3;">
     <h4 class="modal-title" id="modal-basic-title">Tạo kế hoạch mới</h4>
     <button
       type="button"
       class="close"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
+      style="background-color: white; border-radius: 10px; padding: 10px; margin: -0.5rem -0.5rem -1rem auto; outline: none;"
     >
-      <span aria-hidden="true">&times;</span>
+      <mat-icon>close</mat-icon>
     </button>
   </div>
   <div class="modal-body">
@@ -19,7 +20,7 @@
             id="dateOfBirth"
             class="form-control"
             placeholder="Kế hoạch"
-            type="text" name="productName" [(ngModel)]="product.name" required="required"
+            type="text" name="productName" [(ngModel)]="product.name" required
           />
         </div>
       </div>
@@ -52,14 +53,19 @@
       <div class="form-group">
         <label for="dateOfBirth">Miêu tả</label>
         <div class="input-group">
-          <input
+          <textarea
             id="dateOfBirth"
             class="form-control"
             placeholder="Miêu tả"
             type="text" name="productDesc" [(ngModel)]="product.desc"
-          />
+            
+          ></textarea>
         </div>
       </div>
+      <div>
+        <span>File Đính kèm</span>
+      </div>
+      
     </form>
   </div>
   <div class="modal-footer" style="border: none">

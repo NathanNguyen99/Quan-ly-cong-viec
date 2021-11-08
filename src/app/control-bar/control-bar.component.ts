@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../Shared/Models/todo.model';
 import { DataService } from '../Shared/Services/data.service';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,7 +19,14 @@ export class ControlBarComponent implements OnInit {
   faCalendarCheck = faCalendarCheck;
   
   closeResult = '';
+  ngOnInit() {
+    this.getProducts();
+  }
 
+  private getProducts() {
+    this.productService.getProducts().subscribe(data => this.products = data);
+  }
+  
   product = {
     id: 0,
     name: '',
@@ -34,13 +40,7 @@ export class ControlBarComponent implements OnInit {
 
   constructor(private modalService: NgbModal, private productService: ProductService) {}
 
-  ngOnInit() {
-    this.getProducts();
-  }
 
-  private getProducts() {
-    this.productService.getProducts().subscribe(data => this.products = data);
-  }
 
   addProduct() {
     const data = {
@@ -108,57 +108,5 @@ export class ControlBarComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
-
-
-  // todos!: Todo[]
-  // showValidationErrors!: boolean
-
-  // constructor(private dataService: DataService, private dialog: MatDialog) { }
-
-  // openDialog() {
-  //   this.dialog.open(MainPostDetailComponent);
-  // }
-
-  // ngOnInit(): void {
-  //   this.todos = this.dataService.getAllTodos()
-  // }
-
-  // onFormSubmit(form: NgForm) {   
-  //   if (form.invalid) return this.showValidationErrors = true
-
-  //   this.dataService.addTodo(new Todo(form.value.text))
-
-  //   this.showValidationErrors = false
-  //   form.reset()
-  // }
-
-  // toggleCompleted(todo: Todo) {
-  //   todo.completed = !todo.completed;
-  // }
-
-  // editTodo(todo: Todo) {
-  //   const index = this.todos.indexOf(todo)
-
-  //   let dialogRef = this.dialog.open(MainPostDetailComponent, {
-  //     width: '700px',
-  //     data: todo
-  //   });
-
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (result) {
-  //       this.dataService.updateTodo(index, result)
-  //     }
-  //   })
-  // }
-
-  // deleteTodo(todo: Todo) {
-  //   const index = this.todos.indexOf(todo)
-  //   this.dataService.deleteTodo(index)
-  // }
-
-
-  
-
 
 }

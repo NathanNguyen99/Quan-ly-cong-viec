@@ -115,6 +115,7 @@
   margin-right: auto;
   text-align: center;
   display: table;
+  cursor: pointer;
 }
 
 .logo {
@@ -133,51 +134,32 @@ ng-sidebar-container {
 ::ng-deep .ng-sidebar {
   background-color: #f4f4f4;
   width: 300px;
-  padding: 2em 3em;
+  //padding: 2em 3em;
   box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
 
   .menu-items {
-    padding-left: 20px;
-    padding-top: 20px;
-    flex-direction: column;
-    display: flex;
     position: relative;
+    outline: none;
+    line-height: 2;
+    letter-spacing: -0.32px;
+    font-size: 32px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.32px;   
 
-    .nav-item {
-      text-decoration: none;
-      width: 280px;
-      height: 64px;
-      font-size: 32px;
-      font-weight: normal;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 2;
-      letter-spacing: -0.32px;
-      cursor: pointer;
-      position: relative;
-      color: black;
-      outline: none;
+  }
 
-      .right-arrow {
-        position: absolute;
-        right: 0px;
-        display: none;
-        top: 0px;
-        justify-content: center;
-        align-items: center;
-        height: 64px;
-      }
-    }
-
-    .nav-item:hover {
-      color: #007cce;
-    }
-
-    .nav-item:hover .right-arrow {
-      display: flex;
-    }
+  .menu-items:hover {
+    color: #007cce;
   }
 }
+
+ng-material-multilevel-menu {
+  font-size: 2px;
+}
+
+:focus { outline: none; }
 
 .chat-widget-controller {
   outline: none;

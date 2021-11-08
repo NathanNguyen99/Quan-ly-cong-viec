@@ -36,3 +36,8 @@
   width: 50%;
   height: auto;
 }
+
+textarea[type="text"]:focus {
+  height: 7rem;
+  outline: none;
+}

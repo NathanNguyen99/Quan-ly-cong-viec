@@ -1,12 +1,13 @@
 <div
   class="task"
-  style="background-color: white; margin-left: 32px; border-radius: 4px"
+  style="background-color: white; margin-left: 32px; border-radius: 4px; z-index: -1;"
+  *ngIf="this.task"
 >
   <div class="task-container">
     <div class="task-wrapper">
       <div class="task-content-container">
         <span
-          ><fa-icon class="mr1" [icon]="faSquare"></fa-icon>Quản lý dự án</span
+          ><fa-icon class="mr1" style="color: #6bc950" [icon]="faSquare"></fa-icon>{{this.task.name}}</span
         >
         <!-- <div class="head-section">
             <span class="head"> Phòng R & D </span>
@@ -21,12 +22,12 @@
           <span class="ml0-5">+2</span>
         </div>
         <div class="col ml1" style="padding-right: 0px;">
-          <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>ĐANG THỰC HIỆN</button>
-            <div ngbDropdownMenu container="body" style="z-index: 100000 !important;" aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem>ĐANG THỰC HIỆN</button>
-              <button ngbDropdownItem>TRỄ HẠN</button>
-              <button ngbDropdownItem>HOÀN THÀNH</button>
+          <div ngbDropdown placement="top-right" class="d-inline-block">
+            <button class="state-btn" id="dropdownBasic1" style="background-color: #6bc950; color: white;" ngbDropdownToggle>HOÀN THÀNH</button>
+            <div ngbDropdownMenu  container="body" style="z-index: 100000 !important; padding-left: 1rem;padding-right: 1rem;" aria-labelledby="dropdownBasic1">
+              <button class="inProgress-btn" ngbDropdownItem><fa-icon style="color: #2BD9FE; margin-right: 0.5rem;" [icon]="faSquare"></fa-icon>ĐANG THỰC HIỆN</button>
+              <button class="alert-btn" ngbDropdownItem><fa-icon style="color: #DB504A;margin-right: 0.5rem;" [icon]="faSquare"></fa-icon>TRỄ HẠN</button>
+              <button class="complete-btn " ngbDropdownItem><fa-icon style="color: #6bc950;margin-right: 0.5rem;" [icon]="faSquare"></fa-icon>HOÀN THÀNH</button>
             </div>    
           </div>
         </div>
@@ -36,7 +37,7 @@
         <div class="time-section ml1" style="text-align: center">
           <input
             class="date-control"
-            placeholder="dd-mm-yyyy"
+            placeholder={{this.task.fromDate}}
             container="body"
             style="z-index: 100000"
             name="dp"
@@ -49,7 +50,7 @@
         <div class="time-section mr1" style="text-align: center">
           <input
             class="date-control"
-            placeholder="dd-mm-yyyy"
+            placeholder={{this.task.toDate}}
             container="body"
             style="z-index: 100000"
             name="dp"
@@ -63,5 +64,11 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
 
 
