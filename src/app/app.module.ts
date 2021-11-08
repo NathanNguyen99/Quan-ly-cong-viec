@@ -37,7 +37,7 @@ import { ControlBarComponent } from './control-bar/control-bar.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DataService } from './Shared/Services/data.service';
 import { MainPostDetailComponent } from './main-post-detail/main-post-detail.component';
-
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +71,8 @@ import { MainPostDetailComponent } from './main-post-detail/main-post-detail.com
     MatDialogModule,
     FontAwesomeModule,
     NgbModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    HttpClientInMemoryWebApiModule.forRoot(DataService)
   ],
   providers: [
     TokenService,
@@ -82,7 +83,6 @@ import { MainPostDetailComponent } from './main-post-detail/main-post-detail.com
     UserService,
     AuthGuard,
     AppConfig,
-    DataService,
     {provide: NgbDateAdapter, useClass: CustomAdapter},
     {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
   ],

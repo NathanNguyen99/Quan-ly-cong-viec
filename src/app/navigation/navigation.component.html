@@ -54,11 +54,11 @@
     </div>
   </header>
   
-
+  <!-- Sidebar -->
   <ng-sidebar-container style="background-color: #eeeeee">
     <ng-sidebar [opened]="_opened">
       <div class="menu-items">
-        <a href="" class="nav-item"
+        <a href="" [routerLink]="'/home/dashboard'" class="nav-item"
           >Dashboard
           <mat-icon class="right-arrow">arrow_forward</mat-icon>
         </a>
@@ -78,7 +78,11 @@
     </ng-sidebar>
     <div ng-sidebar-content style="background-color: #eeeeee">
       <app-control-bar></app-control-bar>
+
       <router-outlet></router-outlet>
+      <div style="height: 50vh">
+
+      </div>
     </div>
   </ng-sidebar-container> 
   

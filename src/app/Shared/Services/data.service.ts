@@ -1,32 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Todo } from '../Models/todo.model';
-
+import { InMemoryDbService } from 'angular-in-memory-web-api';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class DataService {
-
-  todos: Todo[] = [
-    // new Todo('this is a test!', false),
-    // new Todo('Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit voluptates dolorem alias dolores deserunt, qui, amet odio facilis tempora unde sequi numquam explicabo nihil iste labore beatae ea rerum expedita.', true)
-  ]
-  
-  constructor() { }
-
-  getAllTodos() {
-    return this.todos
+export class DataService implements InMemoryDbService {
+  constructor() {}
+  createDb() {
+    return {
+      products: [
+        {
+          id: 1,
+          name: 'Chỉ đạo 1',
+          fromDate: '1/2/21',
+          toDate: '2/3/21',
+          desc:
+            'Đây là chỉ đạo của tỉnh Bình Dương về việc làm này làm kia',
+          price: '$40',
+        },
+        {
+          id: 2,
+          name: 'Chỉ đạo 2',
+          fromDate: '1/2/21',
+          toDate: '2/3/21',
+          desc:
+            'Đây là kế hoạch khai thác hệ thống',
+        }
+      ],
+    };
   }
-
-  addTodo(todo: Todo) {
-    this.todos.push(todo)
-  }
-
-  updateTodo(index: number, updatedTodo: Todo) {
-    this.todos[index] = updatedTodo
-  }
-
-  deleteTodo(index: number) {
-    this.todos.splice(index, 1)
-  }
-  
 }

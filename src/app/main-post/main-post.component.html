@@ -1,95 +1,105 @@
-<div style="height: 100vh">
-  <div
-    class="main-post"
-    style="margin-top: 1.5rem; margin-left: 1rem; margin-right: 1rem;height: 100vh "
-  >
+<div class="todo-item" *ngIf="this.productItem">
     <div
-      class="main-post-container"
-      style="background: linear-gradient(to right, #007cce 85%, white 15%)"
+      class="main-post"
+      style="
+        margin-top: 1.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+      "
     >
-      <div class="main-post-wrapper">
-        <div class="main-post-content-container">
-          <span class="number">1</span>
+      <div
+        class="main-post-container"
+        style="background: linear-gradient(to right, #007cce 85%, white 15%)"
+      >
+        <div class="main-post-wrapper">
+          <div class="main-post-content-container">
+            <span class="number">{{ productItem.id }}</span>
 
-          <div class="inside-content-container">
-            <div class="up-content-container">
-              <div class="head-section">
-                
-                <span class="head">
-                  <fa-icon (click)="openChildComponent()" [icon]="shoud_open ? faChevronCircleDown : faChevronCircleRight"></fa-icon>
-                  Chỉ đạo 1 </span>
-                <span class="number-of-task m5">3 công việc</span>
-              </div>
+            <div class="inside-content-container">
+              <div class="up-content-container">
+                <div class="head-section">
+                  <span class="head">
+                    <fa-icon
+                      (click)="openChildComponent()"
+                      [icon]="
+                        shoud_open ? faChevronCircleDown : faChevronCircleRight
+                      "
+                    ></fa-icon>
+                    {{ productItem.name }}
+                  </span>
+                  <span class="number-of-task m5">3 công việc</span>
+                </div>
 
-              <fa-icon
-                class="detail-icon m10"
-                [icon]="faExclamationCircle"
-        
-              ></fa-icon>
-              <div class="comment-section m10">
                 <fa-icon
-                  class="m5"
-                  class="comment-icon"
-                  [icon]="faComment"
+                  class="detail-icon m10"
+                  [icon]="faExclamationCircle"
                 ></fa-icon>
-                <span class="comment-content m5">1 bình luận</span>
-              </div>
+                <div class="comment-section m10">
+                  <fa-icon
+                    class="m5"
+                    class="comment-icon"
+                    [icon]="faComment"
+                  ></fa-icon>
+                  <span class="comment-content m5">1 bình luận</span>
+                </div>
 
-              <div class="time-section m30" style="text-align: center">
-                <span>Từ ngày</span><br />
+                <div class="time-section m30" style="text-align: center">
+                  <span>Từ ngày</span><br />
 
-                <input
-                  class="date-control"
-                  placeholder="dd-mm-yyyy"
-                  container="body"
-                  style="position: relative; z-index: 100000 !important;"
-                  name="dp"
-                  [(ngModel)]="fromDate"
-                  ngbDatepicker
-                  #d="ngbDatepicker"
-                  (click)="d.toggle()"
-                />
+                  <input
+                    class="date-control"
+                    placeholder="{{ productItem.fromDate }}"
+                    container="body"
+                    style="position: relative; z-index: 100000 !important"
+                    name="dp"
+                    [(ngModel)]="fromDate"
+                    ngbDatepicker
+                    #d="ngbDatepicker"
+                    (click)="d.toggle()"
+                  />
+                </div>
+                <div class="time-section m30" style="text-align: center">
+                  <span>Đến ngày</span><br />
+                  <input
+                    class="date-control"
+                    placeholder="{{ productItem.toDate }}"
+                    value="{{ productItem.toDate }}"
+                    container="body"
+                    style="z-index: 30"
+                    name="dp" 
+                    [(ngModel)]="toDate"
+                    ngbDatepicker
+                    #e="ngbDatepicker"
+                    
+                    (click)="e.toggle(); e.navigateTo()"
+                  />
+                </div>
+                <div class="time-section m30" style="text-align: center">
+                  <span>Ngày còn lại</span><br />
+                  <span style="padding: 1px 2px">{{ calculateDiff() }}</span>
+                </div>
               </div>
-              <div class="time-section m30" style="text-align: center">
-                <span>Đến ngày</span><br />
-                <input
-                  class="date-control"
-                  placeholder="dd-mm-yyyy"
-                  container="body"
-                  style="z-index: 30"
-                  name="dp"
-                  [(ngModel)]="toDate"
-                  ngbDatepicker
-                  #e="ngbDatepicker"
-                  (click)="e.toggle()"
-                />
+              <div class="down-content-container">
+                <span class="comment"
+                  >{{ productItem.desc }}</span
+                >
               </div>
-              <div class="time-section m30" style="text-align: center">
-                <span>Ngày còn lại</span><br />
-                <span style="padding: 1px 2px">{{ calculateDiff() }}</span>
-              </div>
-            </div>
-            <div class="down-content-container">
-              <span class="comment"
-                >Đây là chỉ đạo của tỉnh Bình Dương về việc làm này làm
-                kia</span
-              >
             </div>
           </div>
-        </div>
 
-        <div class="main-post-percentage-container">
-          <div class="main-post-percentage-wrapper">
-            <span class="percentage-content"> 85% </span>
+          <div class="main-post-percentage-container">
+            <div class="main-post-percentage-wrapper">
+              <span class="percentage-content"> 85% </span>
+            </div>
           </div>
         </div>
       </div>
+      <div *ngIf="shoud_open">
+        <app-sub-post></app-sub-post>
+      </div>
     </div>
-    <div *ngIf="shoud_open">
-      <app-sub-post></app-sub-post>
-    </div>
-  </div>
 </div>
+
 <!-- <div
   class="main-post"
   style="margin-top: 1.5rem; margin-left: 1rem; margin-right: 1rem"

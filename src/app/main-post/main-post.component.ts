@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,EventEmitter, Output, OnInit, Input } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
@@ -6,12 +6,16 @@ import {
   faExclamationCircle,
   faComment, faChevronCircleRight, faChevronCircleDown
 } from '@fortawesome/free-solid-svg-icons';
+import { Product } from '../Shared/Models/product.model';
 @Component({
   selector: 'app-main-post',
   templateUrl: './main-post.component.html',
   styleUrls: ['./main-post.component.scss'],
 })
 export class MainPostComponent {
+
+  @Input() public productItem: Product;
+  @Output() public productEdit = new EventEmitter();
   // Icon
   faExclamationCircle = faExclamationCircle;
   faComment = faComment;
@@ -25,6 +29,10 @@ export class MainPostComponent {
   toDate!: NgbDateStruct;
 
   constructor(private modalService: NgbModal) {}
+
+  public updateMyDate() {
+    this.productEdit.emit(this.productItem);
+  }
 
 
   // Function to calculate days left
