@@ -33,7 +33,8 @@ export class MinPostComponent implements OnInit {
     name: '',
     fromDate: '',
     toDate: '',
-    id: '',
+    id: 0,
+    color: ''
   };
   edit = true;
   add = false;
@@ -41,6 +42,59 @@ export class MinPostComponent implements OnInit {
   inProgressTasks!: Task[];
   alertTasks!: Task[];
 
+  
+  addTask(taskname: string, task:Task,) {
+    const data = {
+      id: task.id,
+      name: task.name,
+      fromDate: task.fromDate,
+      toDate: task.toDate,
+      color: task.color
+    };
+    this.productService.createTask(taskname, data).subscribe(response => {
+      console.log("Create: "+ response)
+    });
+  }
+
+  removeTask(taskname: string, task: Task) {
+    const id = task.id;
+    console.log(task)
+    this.productService.deleteTask(taskname, id).subscribe(subproduct => console.log("Delete" + subproduct));
+  }
+
+  test(color:any, parentColor: any, task:any) {
+    // Example/ current: Dang thuc hien -> new: Hoan thanh
+    if(color != parentColor) {
+      switch(color) {
+        case "#2BD9FE":
+          this.addTask("inProgressTaskSection", task)
+          this.inProgressTask()
+          break;
+        case "#6bc950":
+          this.addTask("doneTaskSection", task)  
+          this.getDoneTask()
+          break;    
+        case "#DB504A":
+          this.addTask("alertTaskSection", task)
+          this.alertTask()      
+          break;
+      } 
+      switch(parentColor) {
+        case "#2BD9FE":
+          this.removeTask("inProgressTaskSection", task)
+          this.inProgressTask()
+          break;
+        case "#6bc950":
+          this.removeTask("doneTaskSection", task)  
+          this.getDoneTask()
+          break;
+        case "#DB504A":
+          this.removeTask("alertTaskSection", task)    
+          this.alertTask()      
+          break;
+      }  
+    }
+  }
 
   private getDoneTask() {
     this.productService

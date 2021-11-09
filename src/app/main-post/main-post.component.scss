@@ -3,7 +3,7 @@
   max-width: 100%;
   margin: auto;
   z-index: -1;
-
+  
 
   .main-post-container {
     width: 100%;
@@ -116,7 +116,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 text-shadow: none;
-                background-color: #2BD9FE;
+                background-color: transparent;
                 transition: all 0.15s ease-in-out;
                 width: 100%;
                 border-radius: 10px;
@@ -201,6 +201,15 @@
         }
       }
     }
+  }
+  .main-post-container::after {
+    z-index: -1;
+    content:'\A';
+    position:absolute;
+    background: #2BD9FE;
+    top:0; bottom:0;
+    left:0; 
+    width:20%;
   }
 }
 

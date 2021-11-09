@@ -10,7 +10,7 @@
         </div>
 
         <div class="head-section" style="background-color: #6bc950">
-          <span class="head"> HOÀN THÀNH </span>
+          <span class="head">HOÀN THÀNH </span>
           <span class="number-of-task m5">3 công việc</span>
         </div>
       </div>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div *ngIf="getDoneTask_open">
-      <app-task *ngFor="let task of DoneTasks" [task]="task"></app-task>
+      <app-task *ngFor="let task of DoneTasks" [task]="task" (changeStateClicked)="test('#2BD9FE', task.color, DoneTasks)"></app-task>
     </div>
   </div>
 </div>

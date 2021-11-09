@@ -9,7 +9,7 @@ import { MainPostComponent } from './main-post/main-post.component';
 const routes: Routes = [
   {path: '', redirectTo: 'home',pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
+  {path: 'home', component: HomeComponent, children: [
     {path: 'dashboard', component: MainPostComponent}
   ] },
   {path: 'reset', component: ChangePasswordComponent, canActivate: [AuthGuard] },

@@ -31,6 +31,17 @@ export class ProductService {
     )
   }
 
+  //Create Task
+  createTask(taskname: string,task: Task): Observable<Product> {
+    task.id = null;
+    return this.http.post<Product>(this.productsUrl + taskname, task).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        return throwError(error);
+      })
+    )
+  }
+
   editProduct(product: Product): Observable<any> {
     return this.http.put(this.productsUrl + product.id, product);
   }
@@ -38,6 +49,11 @@ export class ProductService {
   deleteProduct(id: number): Observable<any> {
     return this.http.delete(this.productsUrl + id);
   }
+  deleteTask(taskname: string, id: number): Observable<any> {
+    return this.http.delete(this.productsUrl + taskname + "/" + id);
+  }
+
+
 
   getSubProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl + 'subproducts/').pipe(

@@ -9,7 +9,7 @@
     >
       <div
         class="main-post-container"
-        style="background: linear-gradient(to right, #2BD9FE 85%, white 15%)"
+        
       >
         <div class="main-post-wrapper">
           <div class="main-post-content-container">
@@ -97,6 +97,7 @@
       <div *ngIf="shoud_open">
         <app-sub-post *ngFor="let subproduct of subproducts" (setSubProductEdit)="setProductEdit($event)" [subProductItem]="subproduct"></app-sub-post>
       </div>
+      
     </div>
 </div>
 
