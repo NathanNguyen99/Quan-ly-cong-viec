@@ -41,6 +41,30 @@ import { MainPostDetailComponent } from './main-post-detail/main-post-detail.com
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { SubProductService } from './Shared/Services/sub-product.service';
+import { IssueModalComponent } from './task/issue-modal/issue-modal.component';
+import { IssueDetailComponent } from './task/issue-detail/issue-detail.component';
+import { IssueDeleteModalComponent } from './task/issue-delete-modal/issue-delete-modal.component';
+import { IssueTitleComponent } from './task/issue-title/issue-title.component';
+import { IssueCommentsComponent } from './task/issue-comments/issue-comments.component';
+import { IssueCommentComponent } from './task/issue-comment/issue-comment.component';
+import { IssueStatusComponent } from './task/issue-status/issue-status.component';
+import { IssueAssigneesComponent } from './task/issue-assignees/issue-assignees.component';
+import { IssuePriorityComponent } from './task/issue-priority/issue-priority.component';
+import { IssueLoaderComponent } from './task/issue-loader/issue-loader.component';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { ContentLoaderModule } from '@ngneat/content-loader';
+import { UserComponent } from './user/user.component';
+import { AvatarComponent } from './avatar/avatar.component';
+import { ButtonComponent } from './button/button.component';
+//import { AngularSvgIconModule } from 'angular-svg-icon';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+//import { SvgIconRegistryService } from 'angular-svg-icon';
+import { SvgIconComponent } from './svg-icon/svg-icon.component';
+import { BoardDndComponent } from './board-dnd/board-dnd.component';
+import { BoardDndListComponent } from './board-dnd-list/board-dnd-list.component';
+import { IssueCardComponent } from './task/issue-card/issue-card.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +81,23 @@ import { SubProductService } from './Shared/Services/sub-product.service';
 
     ControlBarComponent,
     MainPostDetailComponent,
+    IssueModalComponent,
+    IssueDetailComponent,
+    IssueDeleteModalComponent,
+    IssueTitleComponent,
+    IssueCommentsComponent,
+    IssueCommentComponent,
+    IssueStatusComponent,
+    IssueAssigneesComponent,
+    IssuePriorityComponent,
+    IssueLoaderComponent,
+    UserComponent,
+    AvatarComponent,
+    ButtonComponent,
+    SvgIconComponent,
+    BoardDndComponent,
+    BoardDndListComponent,
+    IssueCardComponent,
 
   ],
   imports: [
@@ -78,7 +119,12 @@ import { SubProductService } from './Shared/Services/sub-product.service';
     NgbModule,
     Ng2SearchPipeModule,
     HttpClientInMemoryWebApiModule.forRoot(DataService),
-    MatProgressBarModule
+    MatProgressBarModule,
+    NzDropDownModule,
+    ContentLoaderModule,
+//    AngularSvgIconModule,
+    NzToolTipModule,
+    DragDropModule
   ],
   providers: [
     MultilevelMenuService,
@@ -91,6 +137,8 @@ import { SubProductService } from './Shared/Services/sub-product.service';
     SubProductService,
     AuthGuard,
     AppConfig,
+//    SvgIconRegistryService,
+    NzModalService,
     {provide: NgbDateAdapter, useClass: CustomAdapter},
     {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
   ],
