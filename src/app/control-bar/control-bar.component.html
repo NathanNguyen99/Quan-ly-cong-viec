@@ -86,9 +86,17 @@
   </div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">
-  Tạo kế hoạch mới
-</button>
+<div class="flex items-center mt-6">
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
+    Tạo kế hoạch mới
+  </button>
+  <form class="w-40 mr-4">
+    <j-input aria-label="search"
+             icon="search"                 
+             [control]="searchControl">
+    </j-input>
+</form>
+</div>
 <!-- Use for testing database -->
 <!-- <div>
   <input type="text" name="productName" [(ngModel)]="product.name">

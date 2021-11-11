@@ -2,16 +2,16 @@
   <div class="min-post-container">
     <div class="min-post-wrapper">
       <div class="min-post-content-container">
-        <div class="head-section" style="color: #6bc950; font-size: 22px">
+        <div class="head-section" [style.color]="TaskStatusColors[status]" style=" font-size: 22px">
           <fa-icon
             (click)="getDoneTask_openFunc()"
             [icon]="getDoneTask_open ? faChevronCircleDown : faChevronCircleRight"
           ></fa-icon>
         </div>
 
-        <div class="head-section" style="background-color: #6bc950">
-          <span class="head">HOÀN THÀNH </span>
-          <span class="number-of-task m5">3 công việc</span>
+        <div class="head-section" [style.background-color]="TaskStatusColors[status]"  style="background-color: #6bc950">
+          <span class="head">{{ TaskStatusDisplay[status] }}</span>
+          <span class="number-of-task m5">{{tasksCount}} công việc</span>
         </div>
       </div>
       <div class="right-min-post-content-container">
@@ -22,11 +22,12 @@
       </div>
     </div>
     <div *ngIf="getDoneTask_open">
-      <app-task *ngFor="let task of DoneTasks" [task]="task" (changeStateClicked)="test('#2BD9FE', task.color, DoneTasks)"></app-task>
+      <app-task *ngFor="let task of tasks"
+      [task]="task"></app-task>
     </div>
   </div>
 </div>
-<div class="min-post" style="margin-top: 1.5rem; margin-left: 1rem">
+<!-- <div class="min-post" style="margin-top: 1.5rem; margin-left: 1rem">
   <div class="min-post-container">
     <div class="min-post-wrapper">
       <div class="min-post-content-container">
@@ -39,7 +40,7 @@
 
         <div class="head-section" style="background-color: #DB504A">
           <span class="head"> TRỄ HẠN</span>
-          <span class="number-of-task m5">3 công việc</span>
+          <span class="number-of-task m5">{{inProgressTasksCount}} công việc</span>
         </div>
       </div>
       <div class="right-min-post-content-container">
@@ -67,7 +68,7 @@
 
         <div class="head-section" style="background-color: #2BD9FE">
           <span class="head">ĐANG THỰC HIỆN</span>
-          <span class="number-of-task m5">3 công việc</span>
+          <span class="number-of-task m5">{{alertTasksCount}} công việc</span>
         </div>
       </div>
       <div class="right-min-post-content-container">
@@ -81,4 +82,4 @@
       <app-task *ngFor="let task of alertTasks" [task]="task"></app-task>
     </div>
   </div>
-</div>
+</div> -->

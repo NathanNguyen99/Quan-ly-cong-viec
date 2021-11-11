@@ -19,6 +19,7 @@ export class BoardDndComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this._projectService.setLoading(true);
     this._projectService.getProject();
   }
 

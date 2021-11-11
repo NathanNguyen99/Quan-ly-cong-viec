@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../Shared/Services/data.service';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MainPostDetailComponent } from '../main-post-detail/main-post-detail.component';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -108,5 +108,8 @@ export class ControlBarComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
+  searchControl: FormControl = new FormControl('');
+
 
 }

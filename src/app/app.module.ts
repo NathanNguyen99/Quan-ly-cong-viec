@@ -65,6 +65,7 @@ import { BoardDndComponent } from './board-dnd/board-dnd.component';
 import { BoardDndListComponent } from './board-dnd-list/board-dnd-list.component';
 import { IssueCardComponent } from './task/issue-card/issue-card.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { InputComponent } from './input/input.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,6 +99,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     BoardDndComponent,
     BoardDndListComponent,
     IssueCardComponent,
+    InputComponent,
 
   ],
   imports: [
