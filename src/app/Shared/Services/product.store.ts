@@ -15,7 +15,7 @@ function createInitialState(): ProductState {
   providedIn: 'root'
 })
 @StoreConfig({
-  name: 'project'
+  name: 'product'
 })
 export class ProductStore extends Store<ProductState> {
   constructor() {

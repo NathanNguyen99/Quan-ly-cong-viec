@@ -10,7 +10,7 @@ import { AuthQuery } from '../Auth/auth.query';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { AuthService } from '../Auth/auth.service';
 import { LoginPayload } from '../Auth/loginPayload';
-
+@UntilDestroy()
 @Component({
   selector: 'app-sub-post',
   templateUrl: './sub-post.component.html',

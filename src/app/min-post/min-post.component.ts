@@ -47,6 +47,7 @@ export class MinPostComponent implements OnInit {
   constructor(private _productService: ProductService, private _filterQuery: FilterQuery) {}
 
   ngOnInit(): void {
+    console.log(this.tasks$)
     combineLatest([this.tasks$, this._filterQuery.all$])
       .pipe(untilDestroyed(this))
       .subscribe(([issues, filter]) => {

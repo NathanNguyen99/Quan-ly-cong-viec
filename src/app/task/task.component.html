@@ -7,7 +7,7 @@
     <div class="task-wrapper">
       <div class="task-content-container">
         <span
-          ><fa-icon class="mr1" [style.color]="this.task.color" [icon]="faSquare"></fa-icon>{{this.task.name}}</span
+          ><fa-icon class="mr1"  [icon]="faSquare"></fa-icon>{{this.task.name}}</span
         >
         <!-- <div class="head-section">
             <span class="head"> Phòng R & D </span>
@@ -16,14 +16,11 @@
       </div>
       <div class="right-task-content-container">
         <div style="width: 150px">
-          <img class="user-icon" src="../../assets/messi.jpg" alt="" />
-          <img class="user-icon ml0-5" src="../../assets/messi.jpg" alt="" />
-          <img class="user-icon ml0-5" src="../../assets/messi.jpg" alt="" />
           <span class="ml0-5">+2</span>
         </div>
         <div class="col ml1" style="padding-right: 0px; ">
           <div ngbDropdown container="body"  class="d-inline-block;">
-            <button class="state-btn" id="dropdownBasic1" [style.background-color]="this.task.color" style="color: white; width: 161.88px; " ngbDropdownToggle>{{returnTitle(this.task.color)}}</button>
+            <button class="state-btn" id="dropdownBasic1" style="color: white; width: 161.88px; " ngbDropdownToggle></button>
             <div ngbDropdownMenu  container="body" style="z-index: 100000 !important; padding-left: 1rem;padding-right: 1rem;" aria-labelledby="dropdownBasic1">
               <button class="inProgress-btn" (click)="onchangeStateClicked()" ngbDropdownItem><fa-icon style="color: #2BD9FE; margin-right: 0.5rem;" [icon]="faSquare"></fa-icon>ĐANG THỰC HIỆN</button>
               <button class="alert-btn" ngbDropdownItem><fa-icon style="color: #DB504A;margin-right: 0.5rem;" [icon]="faSquare"></fa-icon>TRỄ HẠN</button>

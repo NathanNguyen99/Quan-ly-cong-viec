@@ -66,6 +66,10 @@ import { BoardDndListComponent } from './board-dnd-list/board-dnd-list.component
 import { IssueCardComponent } from './task/issue-card/issue-card.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { InputComponent } from './input/input.component';
+import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -126,7 +130,9 @@ import { InputComponent } from './input/input.component';
     ContentLoaderModule,
 //    AngularSvgIconModule,
     NzToolTipModule,
-    DragDropModule
+    DragDropModule,
+    environment.production ? [] : AkitaNgDevtools,
+    AkitaNgRouterStoreModule,
   ],
   providers: [
     MultilevelMenuService,

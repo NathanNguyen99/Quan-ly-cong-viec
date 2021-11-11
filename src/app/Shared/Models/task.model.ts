@@ -30,7 +30,6 @@ export interface Task {
   fromDate: string;
   toDate: string;
   id: number;
-  color: string;
   status: TaskStatus;
   listPosition: number;
   userIds: string[];
