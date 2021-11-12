@@ -19,7 +19,7 @@
                 {{ this.subProductItem.name }}
               </span>
               <span class="number-of-task m5"
-                >{{ this.subProductItem.totalTask }} công việc</span
+                >{{ getAllTask }} công việc</span
               >
             </div>
           </div>
@@ -36,14 +36,14 @@
           <div class="task-content-container">
             <div style="text-align: center">
               <span style="font-size: large">{{
-                this.subProductItem.totalTask - this.subProductItem.doneTask
+                getAllTask - getDoneTask
               }}</span
               ><br />
               <span>CV còn lại</span>
             </div>
             <div style="text-align: center">
               <span style="font-size: large">{{
-                this.subProductItem.doneTask
+                getDoneTask
               }}</span
               ><br />
               <span
@@ -59,7 +59,7 @@
           <div class="task-progress-container">
             <p style="width: 100%">
               <ngb-progressbar
-                type="success"
+                type="{{(getPercentage() === 100) ? 'success' : 'info' }}"
                 textType="white"
                 [value]="getPercentage()"
                 [showValue]="true"

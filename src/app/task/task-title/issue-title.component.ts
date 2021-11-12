@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { JIssue } from '../../Shared/Models/issue';
+import { Task } from 'src/app/Shared/Models/task.model';
+import { ProductService } from 'src/app/Shared/Services/product.service';
 import { ProjectService } from '../../Shared/project.service';
 
 @Component({
@@ -9,22 +10,22 @@ import { ProjectService } from '../../Shared/project.service';
   styleUrls: ['./issue-title.component.scss']
 })
 export class IssueTitleComponent implements OnChanges {
-  @Input() issue: JIssue;
+  @Input() task: Task;
   titleControl: FormControl;
 
-  constructor(private _projectService: ProjectService) {}
+  constructor(private _productService: ProductService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    const issueChange = changes.issue;
+    const issueChange = changes.task;
     if (issueChange.currentValue !== issueChange.previousValue) {
-      this.titleControl = new FormControl(this.issue.title);
+      this.titleControl = new FormControl(this.task.name);
     }
   }
 
   onBlur() {
-    this._projectService.updateIssue({
-      ...this.issue,
-      title: this.titleControl.value
+    this._productService.updateTask({
+      ...this.task,
+      name: this.titleControl.value
     });
   }
 }

@@ -17,10 +17,10 @@
           [icon]="faSquare"
         ></fa-icon>
         <span (click)="open(content)">{{ this.task.name }}</span>
-        <!-- <div class="head-section">
-            <span class="head"> Phòng R & D </span>
-            <span class="number-of-task m5">3 công việc</span>
-          </div> -->
+        <!-- nz-tooltip
+            [nzTooltipMouseEnterDelay]="0.3"
+            nzTooltipTitle="Assignee: {{ user.name }}"
+            nzTooltipPlacement="bottom" -->
       </div>
       <div class="right-task-content-container">
         <div class="flex items-center ml-1" style="width: 150px">
@@ -28,16 +28,23 @@
             *ngFor="let user of assignees"
             [className]="'shadow-outline-white -ml-1'"
             [size]="24"
-            nz-tooltip
-            [nzTooltipMouseEnterDelay]="0.3"
-            nzTooltipTitle="Assignee: {{ user.name }}"
-            nzTooltipPlacement="bottom"
+            [ngbPopover]="popContent"
+            [openDelay]="300"
+            [closeDelay]="400"
+            triggers="mouseenter:mouseleave"
             [avatarUrl]="user.avatarUrl"
-          ></j-avatar>
+            ><ng-template #popContent>{{ user.name }}</ng-template></j-avatar
+          >
+
           <!-- <span class="ml0-5">+2</span> -->
         </div>
         <div class="col ml1" style="padding-right: 0px">
-          <div ngbDropdown container="body" class="d-inline-block;">
+          <div
+            ngbDropdown
+            container="body"
+            style="display: d-inline-block"
+            class="d-inline-block;"
+          >
             <button
               class="state-btn"
               id="dropdownBasic1"
@@ -53,14 +60,12 @@
               style="padding-left: 1rem; padding-right: 1rem"
               aria-labelledby="dropdownBasic1"
             >
-              <button
-                ngbDropdownItem
-                *ngFor="let option of issueStatuses"
-                
-              >
-                <div *ngIf="!isStatusSelected(option.value)"
-                (click)="updateTask(option.value)">
-                {{ option.label }}             
+              <button ngbDropdownItem *ngFor="let option of issueStatuses">
+                <div
+                  *ngIf="!isStatusSelected(option.value)"
+                  (click)="updateTask(option.value)"
+                >
+                  {{ option.label }}
                 </div>
               </button>
             </div>
@@ -101,13 +106,31 @@
 </div>
 
 <ng-template #content let-modal>
+  <div class="modal-header" style="background-color: #eff0f3; border: none;">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+      style="
+        background-color: white;
+        border-radius: 10px;
+        padding: 5px;
+        margin: -0.5rem -0.5rem -0.5rem auto;
+        outline: none;
+      "
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <!-- (onDelete)="deleteIssue($event)" -->
   <div class="modal-body">
     <issue-detail
-      [task]="this._productQuery.issueById$(this.task.id) | async"
+      [task]="task$ | async"
       [isShowFullScreenButton]="true"
       [isShowCloseButton]="true"
       (onClosed)="closeModal()"
-      (onDelete)="deleteIssue($event)"
+      
     >
     </issue-detail>
   </div>

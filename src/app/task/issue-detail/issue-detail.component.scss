@@ -1,0 +1,38 @@
+//flex w-full flex-wrap pb-16
+.task-detail-container {
+    display: flex;
+    max-width: 100%;
+    flex-wrap: wrap;
+    .task-detail-wrapper {
+        display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    //sm:w-full md:w-7/12 lg:w-4/6 pr-10
+    .left-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        overflow-wrap: break-word;
+        width: 50%;
+
+        .task-state-container {
+            display: flex;
+            justify-content: start;
+            flex-direction: row;
+        }
+    }
+
+    .right-wrapper {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+        overflow-wrap: break-word;
+        height: auto;
+    }
+}

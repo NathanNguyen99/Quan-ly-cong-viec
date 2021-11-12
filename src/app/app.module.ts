@@ -53,10 +53,9 @@ import { MainPostDetailComponent } from './main-post-detail/main-post-detail.com
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SubProductService } from './Shared/Services/sub-product.service';
-import { TaskModalComponent } from './task/task-modal/task-modal.component';
 import { IssueDetailComponent } from './task/issue-detail/issue-detail.component';
 import { IssueDeleteModalComponent } from './task/issue-delete-modal/issue-delete-modal.component';
-import { IssueTitleComponent } from './task/issue-title/issue-title.component';
+import { IssueTitleComponent } from './task/task-title/issue-title.component';
 import { IssueCommentsComponent } from './task/issue-comments/issue-comments.component';
 import { IssueCommentComponent } from './task/issue-comment/issue-comment.component';
 import { IssueStatusComponent } from './task/issue-status/issue-status.component';
@@ -96,7 +95,6 @@ import { environment } from '../environments/environment';
 
     ControlBarComponent,
     MainPostDetailComponent,
-    TaskModalComponent,
     IssueDetailComponent,
     IssueDeleteModalComponent,
     IssueTitleComponent,

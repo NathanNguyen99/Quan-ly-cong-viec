@@ -10,9 +10,9 @@ import { IssuePriorityIcon } from '../Shared/Models/issue-priority-icon';
 import { ProjectQuery } from '../Shared/project.query';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { IssueUtil } from '../utils/issue';
-import { TaskModalComponent } from './task-modal/task-modal.component';
 import { ProductQuery } from '../Shared/Services/product.query';
 import { DeleteIssueModel } from '../Shared/Models/ui-model/delete-issue-model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-task',
@@ -42,7 +42,7 @@ export class TaskComponent implements OnInit {
   issueTypeIcon: string;
   priorityIcon: IssuePriorityIcon;
 
-
+  task$ : Observable<Task>;
   ngOnInit(): void {
     this.issueStatuses = [
       new IssueStatusValueTitle(TaskStatus.SELECTED),
@@ -52,6 +52,7 @@ export class TaskComponent implements OnInit {
     this._productQuery.users$.pipe(untilDestroyed(this)).subscribe((users) => {
       this.assignees = this.task.userIds.map((userId) => users.find((x) => x.id === userId));
     });
+    this.task$ = this._productQuery.issueById$(this.task.id)
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -85,19 +86,6 @@ export class TaskComponent implements OnInit {
     this.isVisible = false;
   }
 
-  openIssueModal(taskId: string) {
-    this._modalService.create({
-      nzContent: TaskModalComponent,
-      nzWidth: 1040,
-      nzClosable: false,
-      nzFooter: null,
-      
-      nzComponentParams: {
-        task$: this._productQuery.issueById$(taskId)
-      }
-    });
-  }
-
   closeModal() {
     this.activeModal.dismiss('Cross click')
   }
@@ -115,7 +103,7 @@ export class TaskComponent implements OnInit {
 
   closeResult = '';
   open(content:any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { size: 'xl' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
