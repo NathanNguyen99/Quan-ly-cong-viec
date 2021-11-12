@@ -34,13 +34,12 @@ export class ProductQuery extends Query<ProductState> {
       })
     )
   }
-  
 
-//   issueById$(issueId: string){
-//     return this.issues$.pipe(
-//       delay(500),
-//       map((issues) => issues.find(x => x.id === issueId))
-//     );
-//   }
+  issueById$(issueId: string){
+    return this.tasks$.pipe(
+      delay(500),
+      map((issues) => issues.find(x => x.id === issueId))
+    );
+  }
 
 }

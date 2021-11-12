@@ -8,17 +8,20 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { MultilevelMenuService, NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
+import {
+  MultilevelMenuService,
+  NgMaterialMultilevelMenuModule,
+} from 'ng-material-multilevel-menu';
 import { LoginComponent } from './login/login.component';
 import { TokenService } from './Shared/Services/token.service';
 import { baseService } from './Shared/Services/base.service';
 import { LoadingComponent } from './Shared/loading/loading/loading.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatMenuModule} from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 import { Auth } from './Auth/auth';
-import { HttpClientModule } from '@angular/common/http'
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { AppConfig } from './Config/config';
 import { AuthGuard } from './Auth/canActivateAuthGuard';
 import { NavService } from './Shared/Services/nav.service';
@@ -29,8 +32,17 @@ import { AlertService } from './Shared/Services/alert.service';
 import { UserService } from './Shared/Services/user.service';
 import { MainPostComponent } from './main-post/main-post.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbDateAdapter, NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CustomAdapter, CustomDateParserFormatter } from './Shared/Services/customday.service';
+import {
+  NgbDateAdapter,
+  NgbDateParserFormatter,
+  NgbModule,
+  NgbDate,
+  NgbActiveModal,
+} from '@ng-bootstrap/ng-bootstrap';
+import {
+  CustomAdapter,
+  CustomDateParserFormatter,
+} from './Shared/Services/customday.service';
 import { SubPostComponent } from './sub-post/sub-post.component';
 import { MinPostComponent } from './min-post/min-post.component';
 import { TaskComponent } from './task/task.component';
@@ -39,9 +51,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DataService } from './Shared/Services/data.service';
 import { MainPostDetailComponent } from './main-post-detail/main-post-detail.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SubProductService } from './Shared/Services/sub-product.service';
-import { IssueModalComponent } from './task/issue-modal/issue-modal.component';
+import { TaskModalComponent } from './task/task-modal/task-modal.component';
 import { IssueDetailComponent } from './task/issue-detail/issue-detail.component';
 import { IssueDeleteModalComponent } from './task/issue-delete-modal/issue-delete-modal.component';
 import { IssueTitleComponent } from './task/issue-title/issue-title.component';
@@ -58,13 +70,11 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { ButtonComponent } from './button/button.component';
 //import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 //import { SvgIconRegistryService } from 'angular-svg-icon';
 import { SvgIconComponent } from './svg-icon/svg-icon.component';
-import { BoardDndComponent } from './board-dnd/board-dnd.component';
-import { BoardDndListComponent } from './board-dnd-list/board-dnd-list.component';
-import { IssueCardComponent } from './task/issue-card/issue-card.component';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { InputComponent } from './input/input.component';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
@@ -86,7 +96,7 @@ import { environment } from '../environments/environment';
 
     ControlBarComponent,
     MainPostDetailComponent,
-    IssueModalComponent,
+    TaskModalComponent,
     IssueDetailComponent,
     IssueDeleteModalComponent,
     IssueTitleComponent,
@@ -100,11 +110,7 @@ import { environment } from '../environments/environment';
     AvatarComponent,
     ButtonComponent,
     SvgIconComponent,
-    BoardDndComponent,
-    BoardDndListComponent,
-    IssueCardComponent,
     InputComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -123,12 +129,13 @@ import { environment } from '../environments/environment';
     MatDialogModule,
     FontAwesomeModule,
     NgbModule,
+    NzModalModule,
     Ng2SearchPipeModule,
     HttpClientInMemoryWebApiModule.forRoot(DataService),
     MatProgressBarModule,
     NzDropDownModule,
     ContentLoaderModule,
-//    AngularSvgIconModule,
+    //    AngularSvgIconModule,
     NzToolTipModule,
     DragDropModule,
     environment.production ? [] : AkitaNgDevtools,
@@ -145,11 +152,12 @@ import { environment } from '../environments/environment';
     SubProductService,
     AuthGuard,
     AppConfig,
-//    SvgIconRegistryService,
+    NgbActiveModal,
+    //    SvgIconRegistryService,
     NzModalService,
-    {provide: NgbDateAdapter, useClass: CustomAdapter},
-    {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
+    { provide: NgbDateAdapter, useClass: CustomAdapter },
+    { provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

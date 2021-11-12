@@ -7,6 +7,7 @@ import { catchError, retry, tap } from 'rxjs/operators';
 import { Task } from '../Models/task.model';
 import { ProductStore } from './product.store';
 import { arrayRemove, arrayUpsert, setLoading } from '@datorama/akita';
+import { DateUtil } from 'src/app/utils/date';
 @Injectable({
   providedIn: 'root'
 })
@@ -52,9 +53,9 @@ export class ProductService {
   deleteProduct(id: number): Observable<any> {
     return this.http.delete(this.productsUrl + id);
   }
-  deleteTask(taskname: string, id: number): Observable<any> {
-    return this.http.delete(this.productsUrl + taskname + "/" + id);
-  }
+  // deleteTask(taskname: string, id: number): Observable<any> {
+  //   return this.http.delete(this.productsUrl + taskname + "/" + id);
+  // }
 
 
 
@@ -101,4 +102,27 @@ export class ProductService {
       )
       .subscribe();
   }
+
+  deleteTask(issueId: string) {
+    this._store.update((state) => {
+      const tasks = arrayRemove(state.tasks, issueId);
+      return {
+        ...state,
+        tasks,
+      };
+    });
+  }
+
+  updateTask(task: Task) {
+    //task.updatedAt = DateUtil.getNow();
+    this._store.update((state) => {
+      const tasks = arrayUpsert(state.tasks, task.id, task);
+      return {
+        ...state,
+        tasks,
+      };
+    });
+  }
+
+
 }

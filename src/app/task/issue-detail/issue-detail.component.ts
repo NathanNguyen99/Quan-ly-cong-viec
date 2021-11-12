@@ -1,17 +1,18 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { JIssue } from 'src/app/Shared/Models/issue';
 import { ProjectQuery } from 'src/app/Shared/project.query';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { IssueDeleteModalComponent } from '../issue-delete-modal/issue-delete-modal.component';
 import { DeleteIssueModel } from '../../Shared/Models/ui-model/delete-issue-model';
+import { Task } from 'src/app/Shared/Models/task.model';
 
 @Component({
   selector: 'issue-detail',
   templateUrl: './issue-detail.component.html',
   styleUrls: ['./issue-detail.component.scss']
 })
-export class IssueDetailComponent{
-  @Input() issue: JIssue;
+export class IssueDetailComponent implements OnInit{
+  @Input() task: Task;
   @Input() isShowFullScreenButton: boolean;
   @Input() isShowCloseButton: boolean;
   @Output() onClosed = new EventEmitter();
@@ -19,6 +20,9 @@ export class IssueDetailComponent{
   @Output() onDelete = new EventEmitter<DeleteIssueModel>();
 
   constructor(public projectQuery: ProjectQuery, private _modalService: NzModalService) {}
+  ngOnInit(): void {
+    console.log(this.task)
+  }
 
   openDeleteIssueModal() {
     this._modalService.create({
@@ -29,7 +33,7 @@ export class IssueDetailComponent{
         top: '140px'
       },
       nzComponentParams: {
-        issueId: this.issue.id,
+        issueId: this.task.id,
         onDelete: this.onDelete
       }
     });
@@ -40,6 +44,6 @@ export class IssueDetailComponent{
   }
 
   openIssuePage() {
-    this.onOpenIssue.emit(this.issue.id);
+    this.onOpenIssue.emit(this.task.id);
   }
 }

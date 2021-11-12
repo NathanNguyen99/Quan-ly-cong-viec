@@ -5,7 +5,6 @@ import { AuthGuard }  from './Auth/canActivateAuthGuard';
 import { LoginComponent }   from './login/login.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { MainPostComponent } from './main-post/main-post.component';
-import { BoardDndComponent } from './board-dnd/board-dnd.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home',pathMatch: 'full'},
@@ -14,7 +13,6 @@ const routes: Routes = [
     {path: 'dashboard', component: MainPostComponent}
   ] },
   {path: 'reset', component: ChangePasswordComponent, canActivate: [AuthGuard] },
-  {path: 'board',component: BoardDndComponent},
 ];
 
 @NgModule({

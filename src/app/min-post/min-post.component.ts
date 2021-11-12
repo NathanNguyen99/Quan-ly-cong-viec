@@ -23,17 +23,9 @@ export class MinPostComponent implements OnInit {
   faChevronCircleDown = faChevronCircleDown;
 
   public getDoneTask_open = false;
-  public inProgressTask_open = false;
-  public alertTask_open = false;
 
   getDoneTask_openFunc() {
     this.getDoneTask_open = !this.getDoneTask_open;
-  }
-  inProgressTask_openFunc() {
-    this.inProgressTask_open = !this.inProgressTask_open;
-  }
-  alertTask_openFunc() {
-    this.alertTask_open = !this.alertTask_open;
   }
 
   TaskStatusDisplay = TaskStatusDisplay;
@@ -51,11 +43,8 @@ export class MinPostComponent implements OnInit {
     combineLatest([this.tasks$, this._filterQuery.all$])
       .pipe(untilDestroyed(this))
       .subscribe(([issues, filter]) => {
-        console.log(this.tasks$)
         this.tasks = this.filterIssues(issues, filter);
-        console.log("Issue here" + this.tasks)
       });
-      
   }
 
   get tasksCount(): number {

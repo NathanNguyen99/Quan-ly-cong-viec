@@ -1,6 +1,6 @@
 import { IssuePriority, IssueType } from '../Shared/Models/issue';
 import { IssuePriorityIcon } from '../Shared/Models/issue-priority-icon';
-
+import { TaskStatus } from '../Shared/Models/task.model';
 export class IssueUtil {
   static getIssueTypeIcon(issueType: IssueType): string {
     return issueType?.toLowerCase();
@@ -9,6 +9,7 @@ export class IssueUtil {
   static getIssuePriorityIcon(issuePriority: IssuePriority): IssuePriorityIcon {
     return new IssuePriorityIcon(issuePriority);
   }
+
 
   static getRandomId(): string {
     return `${Math.ceil(Math.random() * 8000)}`;

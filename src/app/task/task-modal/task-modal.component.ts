@@ -1,18 +1,18 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { JIssue } from '../../Shared/Models/issue';
 import { ProjectService } from 'src/app/Shared/project.service';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { Observable } from 'rxjs';
 import { DeleteIssueModel } from '../../Shared/Models/ui-model/delete-issue-model';
+import { Task } from 'src/app/Shared/Models/task.model';
 
 @Component({
-  selector: 'issue-modal',
-  templateUrl: './issue-modal.component.html',
-  styleUrls: ['./issue-modal.component.scss']
+  selector: 'task-modal',
+  templateUrl: './task-modal.component.html',
+  styleUrls: ['./task-modal.component.scss']
 })
-export class IssueModalComponent {
-  @Input() issue$: Observable<JIssue>;
+export class TaskModalComponent {
+  @Input() task$: Observable<Task>;
 
   constructor(
     private _modal: NzModalRef,

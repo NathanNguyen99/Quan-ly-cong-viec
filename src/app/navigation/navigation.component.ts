@@ -60,7 +60,16 @@ export class NavigationComponent {
     },
     {
       label: 'Danh mục',
-      link: '/item-3',
+      items: [
+        {
+          label: 'Phòng ban',
+          link: '/item-2-1',
+        },
+        {
+          label: 'Nhân viên',
+          link: '/item-2-2',
+        }
+      ]
     },
     {
       label: 'Hệ thống',

@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+  <button type="button" class="close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <issue-detail
+    [task]="task$ | async"
+    [isShowFullScreenButton]="true"
+    [isShowCloseButton]="true"
+    (onClosed)="closeModal()"
+    (onOpenIssue)="openIssuePage($event)"
+    (onDelete)="deleteIssue($event)"
+  >
+  </issue-detail>
+</div>

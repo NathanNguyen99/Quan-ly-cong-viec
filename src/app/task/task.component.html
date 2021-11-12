@@ -1,40 +1,78 @@
 <div
   class="task"
-  style="background-color: white; margin-left: 32px; border-radius: 4px; z-index: -1;"
+  style="
+    background-color: white;
+    margin-left: 32px;
+    border-radius: 4px;
+    z-index: -1;
+  "
   *ngIf="this.task"
 >
   <div class="task-container">
     <div class="task-wrapper">
       <div class="task-content-container">
-        <span
-          ><fa-icon class="mr1"  [icon]="faSquare"></fa-icon>{{this.task.name}}</span
-        >
+        <fa-icon
+          class="mr1"
+          [style.color]="TaskStatusColors[task.status]"
+          [icon]="faSquare"
+        ></fa-icon>
+        <span (click)="open(content)">{{ this.task.name }}</span>
         <!-- <div class="head-section">
             <span class="head"> Phòng R & D </span>
             <span class="number-of-task m5">3 công việc</span>
           </div> -->
       </div>
       <div class="right-task-content-container">
-        <div style="width: 150px">
-          <span class="ml0-5">+2</span>
+        <div class="flex items-center ml-1" style="width: 150px">
+          <j-avatar
+            *ngFor="let user of assignees"
+            [className]="'shadow-outline-white -ml-1'"
+            [size]="24"
+            nz-tooltip
+            [nzTooltipMouseEnterDelay]="0.3"
+            nzTooltipTitle="Assignee: {{ user.name }}"
+            nzTooltipPlacement="bottom"
+            [avatarUrl]="user.avatarUrl"
+          ></j-avatar>
+          <!-- <span class="ml0-5">+2</span> -->
         </div>
-        <div class="col ml1" style="padding-right: 0px; ">
-          <div ngbDropdown container="body"  class="d-inline-block;">
-            <button class="state-btn" id="dropdownBasic1" style="color: white; width: 161.88px; " ngbDropdownToggle></button>
-            <div ngbDropdownMenu  container="body" style="z-index: 100000 !important; padding-left: 1rem;padding-right: 1rem;" aria-labelledby="dropdownBasic1">
-              <button class="inProgress-btn" (click)="onchangeStateClicked()" ngbDropdownItem><fa-icon style="color: #2BD9FE; margin-right: 0.5rem;" [icon]="faSquare"></fa-icon>ĐANG THỰC HIỆN</button>
-              <button class="alert-btn" ngbDropdownItem><fa-icon style="color: #DB504A;margin-right: 0.5rem;" [icon]="faSquare"></fa-icon>TRỄ HẠN</button>
-              <button class="complete-btn " ngbDropdownItem><fa-icon style="color: #6bc950;margin-right: 0.5rem;" [icon]="faSquare"></fa-icon>HOÀN THÀNH</button>
-            </div>    
+        <div class="col ml1" style="padding-right: 0px">
+          <div ngbDropdown container="body" class="d-inline-block;">
+            <button
+              class="state-btn"
+              id="dropdownBasic1"
+              [style.background-color]="TaskStatusColors[task.status]"
+              style="color: white; width: 161.88px"
+              ngbDropdownToggle
+            >
+              {{ TaskStatusDisplay[task.status] }}
+            </button>
+            <div
+              ngbDropdownMenu
+              container="body"
+              style="padding-left: 1rem; padding-right: 1rem"
+              aria-labelledby="dropdownBasic1"
+            >
+              <button
+                ngbDropdownItem
+                *ngFor="let option of issueStatuses"
+                
+              >
+                <div *ngIf="!isStatusSelected(option.value)"
+                (click)="updateTask(option.value)">
+                {{ option.label }}             
+                </div>
+              </button>
+            </div>
           </div>
         </div>
         <!-- <div class="head-section ml1" style="background-color: #6bc950">
           <span>HOÀN THÀNH</span>
-        </div> -->  
+        </div> -->
         <div class="time-section ml1" style="text-align: center">
           <input
             class="date-control"
-            placeholder={{this.task.fromDate}}
+            placeholder="{{ this.task.fromDate }}"
             container="body"
             style="z-index: 100000"
             name="dp"
@@ -47,7 +85,7 @@
         <div class="time-section mr1" style="text-align: center">
           <input
             class="date-control"
-            placeholder={{this.task.toDate}}
+            placeholder="{{ this.task.toDate }}"
             container="body"
             style="z-index: 100000"
             name="dp"
@@ -61,6 +99,19 @@
     </div>
   </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-body">
+    <issue-detail
+      [task]="this._productQuery.issueById$(this.task.id) | async"
+      [isShowFullScreenButton]="true"
+      [isShowCloseButton]="true"
+      (onClosed)="closeModal()"
+      (onDelete)="deleteIssue($event)"
+    >
+    </issue-detail>
+  </div>
+</ng-template>
 
 <!-- <div class="issue-wrap">
   <div (click)="openIssueModal(issue.id)"
@@ -105,10 +156,3 @@
       </div>
   </div>
 </div> -->
-
-
-
-
-
-
-
