@@ -23,7 +23,6 @@ export class AuthService {
             ...state,
             ...user
           }));
-          console.log(user)
         }),
         finalize(() => {
           this._store.setLoading(false);

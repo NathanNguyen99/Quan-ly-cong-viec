@@ -1,7 +1,7 @@
 
 
 
-
+import { Comment } from "./comment";
 
 
 
@@ -33,4 +33,5 @@ export interface Task {
   status: TaskStatus;
   listPosition: number;
   userIds: string[];
+  comments: Comment[];
 }

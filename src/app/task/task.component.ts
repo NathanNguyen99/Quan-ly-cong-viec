@@ -4,12 +4,8 @@ import { ModalDismissReasons, NgbActiveModal, NgbDateStruct, NgbModal } from '@n
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
 import { Task, TaskStatus, TaskStatusColors, TaskStatusDisplay } from '../Shared/Models/task.model';
 import { ProductService } from '../Shared/Services/product.service';
-import { JIssue } from '../Shared/Models/issue';
 import { User } from '../Shared/Models/user';
-import { IssuePriorityIcon } from '../Shared/Models/issue-priority-icon';
-import { ProjectQuery } from '../Shared/project.query';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { IssueUtil } from '../utils/issue';
 import { ProductQuery } from '../Shared/Services/product.query';
 import { DeleteIssueModel } from '../Shared/Models/ui-model/delete-issue-model';
 import { Observable } from 'rxjs';
@@ -40,7 +36,7 @@ export class TaskComponent implements OnInit {
   //Below are new modification 
   assignees: User[];
   issueTypeIcon: string;
-  priorityIcon: IssuePriorityIcon;
+  //priorityIcon: IssuePriorityIcon;
 
   task$ : Observable<Task>;
   ngOnInit(): void {

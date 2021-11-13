@@ -8,6 +8,7 @@ import { Task } from '../Models/task.model';
 import { ProductStore } from './product.store';
 import { arrayRemove, arrayUpsert, setLoading } from '@datorama/akita';
 import { DateUtil } from 'src/app/utils/date';
+import { Comment } from '../Models/comment';
 @Injectable({
   providedIn: 'root'
 })
@@ -93,7 +94,7 @@ export class ProductService {
             ...state,
             ...project,
           }));
-          console.log(project)
+          
         }),
         catchError((error) => {
           this._store.setError(error);
@@ -121,6 +122,20 @@ export class ProductService {
         ...state,
         tasks,
       };
+    });
+  }
+
+  updateTaskComment(taskId: string, comment: Comment) {
+    const allIssues = this._store.getValue().tasks;
+    const task = allIssues.find((x) => x.id === taskId);
+    if (!task) {
+      return;
+    }
+
+    const comments = arrayUpsert(task.comments ?? [], comment.id, comment);
+    this.updateTask({
+      ...task,
+      comments
     });
   }
 

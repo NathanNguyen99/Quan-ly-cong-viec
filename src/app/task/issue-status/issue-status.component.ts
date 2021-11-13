@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IssueStatus, IssueStatusDisplay, JIssue } from '../../Shared/Models/issue';
-import { ProjectService } from 'src/app/Shared/project.service';
-import { ProjectQuery } from 'src/app/Shared/project.query';
+import { Task, TaskStatus, TaskStatusColors, TaskStatusDisplay } from 'src/app/Shared/Models/task.model';
+import { ProductService } from 'src/app/Shared/Services/product.service';
+import { ProductQuery } from 'src/app/Shared/Services/product.query';
 
 @Component({
   selector: 'issue-status',
@@ -9,47 +9,42 @@ import { ProjectQuery } from 'src/app/Shared/project.query';
   styleUrls: ['./issue-status.component.scss']
 })
 export class IssueStatusComponent implements OnInit {
-  @Input() issue: JIssue;
+  @Input() task: Task;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  IssueStatusDisplay = IssueStatusDisplay;
-
-  variants = {
-    [IssueStatus.SELECTED]: 'btn-secondary',
-    [IssueStatus.IN_PROGRESS]: 'btn-primary',
-    [IssueStatus.DONE]: 'btn-success'
-  };
+  TaskStatusDisplay = TaskStatusDisplay;
+  TaskStatusColors = TaskStatusColors;
 
   issueStatuses: IssueStatusValueTitle[];
 
-  constructor(private _projectService: ProjectService, private _projectQuery: ProjectQuery) {}
+  constructor(private _productService: ProductService, private _productQuery: ProductQuery) {}
 
   ngOnInit(): void {
     this.issueStatuses = [
-      new IssueStatusValueTitle(IssueStatus.SELECTED),
-      new IssueStatusValueTitle(IssueStatus.IN_PROGRESS),
-      new IssueStatusValueTitle(IssueStatus.DONE)
+      new IssueStatusValueTitle(TaskStatus.SELECTED),
+      new IssueStatusValueTitle(TaskStatus.IN_PROGRESS),
+      new IssueStatusValueTitle(TaskStatus.DONE)
     ];
   }
 
-  updateIssue(status: IssueStatus) {
-    const newPosition = this._projectQuery.lastIssuePosition(status);
-    this._projectService.updateIssue({
-      ...this.issue,
+  updateTask(status: TaskStatus) {
+    const newPosition = this._productQuery.lastIssuePosition(status);
+    this._productService.updateTask({
+      ...this.task,
       status,
       listPosition: newPosition + 1
     });
   }
 
-  isStatusSelected(status: IssueStatus) {
-    return this.issue.status === status;
+  isStatusSelected(status: TaskStatus) {
+    return this.task.status === status;
   }
 }
 
 class IssueStatusValueTitle {
-  value: IssueStatus;
+  value: TaskStatus;
   label: string;
-  constructor(issueStatus: IssueStatus) {
-    this.value = issueStatus;
-    this.label = IssueStatusDisplay[issueStatus];
+  constructor(taskStatus: TaskStatus) {
+    this.value = taskStatus;
+    this.label = TaskStatusDisplay[taskStatus];
   }
 }

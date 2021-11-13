@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { JIssue } from 'src/app/Shared/Models/issue';
-import { ProjectQuery } from 'src/app/Shared/project.query';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { IssueDeleteModalComponent } from '../issue-delete-modal/issue-delete-modal.component';
 import { DeleteIssueModel } from '../../Shared/Models/ui-model/delete-issue-model';
 import { Task } from 'src/app/Shared/Models/task.model';
-
+import { ProductQuery } from 'src/app/Shared/Services/product.query';
+import {
+  faCloudUploadAlt,
+} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'issue-detail',
   templateUrl: './issue-detail.component.html',
@@ -19,7 +20,9 @@ export class IssueDetailComponent implements OnInit{
   @Output() onOpenIssue = new EventEmitter<string>();
   @Output() onDelete = new EventEmitter<DeleteIssueModel>();
 
-  constructor(public projectQuery: ProjectQuery, private _modalService: NzModalService) {}
+  faCloudUploadAlt = faCloudUploadAlt
+
+  constructor(public productQuery: ProductQuery, private _modalService: NzModalService) {}
   ngOnInit(): void {
     console.log(this.task)
   }

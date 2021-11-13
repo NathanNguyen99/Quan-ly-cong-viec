@@ -1,9 +1,11 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { JIssue } from 'src/app/Shared/Models/issue';
+import { Task } from 'src/app/Shared/Models/task.model';
 import { User } from 'src/app/Shared/Models/user';
-import { ProjectService } from 'src/app/Shared/project.service';
-
+import { ProductService } from 'src/app/Shared/Services/product.service';
+import {
+  faPlusCircle,
+} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'issue-assignees',
   templateUrl: './issue-assignees.component.html',
@@ -11,39 +13,41 @@ import { ProjectService } from 'src/app/Shared/project.service';
 })
 @UntilDestroy()
 export class IssueAssigneesComponent implements OnInit, OnChanges {
-  @Input() issue: JIssue;
+  @Input() task: Task;
   @Input() users: User[];
   assignees: User[];
 
-  constructor(private _projectService: ProjectService) {}
+  faPlusCircle = faPlusCircle
+
+  constructor(private _productService: ProductService) {}
 
   ngOnInit(): void {
-    this.assignees = this.issue.userIds.map((userId) => this.users.find((x) => x.id === userId));
+    this.assignees = this.task.userIds.map((userId) => this.users.find((x) => x.id === userId));
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const issueChange = changes.issue;
+    const issueChange = changes.task;
     if (this.users && issueChange.currentValue !== issueChange.previousValue) {
-      this.assignees = this.issue.userIds.map((userId) => this.users.find((x) => x.id === userId));
+      this.assignees = this.task.userIds.map((userId) => this.users.find((x) => x.id === userId));
     }
   }
 
   removeUser(userId: string) {
-    const newUserIds = this.issue.userIds.filter((x) => x !== userId);
-    this._projectService.updateIssue({
-      ...this.issue,
+    const newUserIds = this.task.userIds.filter((x) => x !== userId);
+    this._productService.updateTask({
+      ...this.task,
       userIds: newUserIds
     });
   }
 
-  addUserToIssue(user: User) {
-    this._projectService.updateIssue({
-      ...this.issue,
-      userIds: [...this.issue.userIds, user.id]
+  addUserToTask(user: User) {
+    this._productService.updateTask({
+      ...this.task,
+      userIds: [...this.task.userIds, user.id]
     });
   }
 
   isUserSelected(user: User): boolean {
-    return this.issue.userIds.includes(user.id);
+    return this.task.userIds.includes(user.id);
   }
 }

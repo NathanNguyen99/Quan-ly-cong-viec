@@ -1,7 +1,7 @@
-<issue-comment [createMode]="true"
-               [issueId]="issue?.id">
-
-</issue-comment>
-<issue-comment *ngFor="let comment of issue?.comments"
+<issue-comment *ngFor="let comment of task.comments"
                [comment]="comment">
+</issue-comment>
+<issue-comment [createMode]="true"
+               [issueId]="task.id">
+
 </issue-comment>

@@ -1,34 +1,55 @@
-<div
-  *ngIf="task; else loaderTmpl"
-  class="w-full h-full"
-  [class.pl-4]="isShowCloseButton"
->
+<div *ngIf="task; else loaderTmpl" class="task-detail">
   <div class="task-detail-container">
     <div class="task-detail-wrapper">
-      <div class="left-wrapper">
-        <div class="task-state-container">
-          <!-- <issue-status [task]="task"></issue-status> -->
-          <!-- <issue-assignees
-            [task]="task"
-            [users]="projectQuery.users$ | async"
-          >
-          </issue-assignees> -->
-          <issue-title [task]="task"></issue-title>
-
-          <!-- <div class="pt-4 pb-2 text-15 font-medium">Description</div> -->
-          <!-- <issue-description [issue]="issue"></issue-description> -->
-
-          <!-- <div class="pt-4 pb-2 text-15 font-medium">Comments</div> -->
-          <!-- <issue-comments [issue]="issue"></issue-comments> -->
+      <div class="head-wrapper">
+        <div class="head-wrapper-left">
+          <div>
+            <span>Trạng thái</span><br>
+            <issue-status [task]="task"></issue-status>
+          </div>
+          <div class="ml1">
+            <span>Người thực hiện</span><br>
+            <issue-assignees [task]="task" [users]="productQuery.users$ | async">
+            </issue-assignees>
+          </div>
         </div>
-        <div class="right-wrapper">
-          <!-- <issue-status [issue]="issue"></issue-status>
-                  <issue-assignees [issue]="issue"
-                                   [users]="projectQuery.users$ | async">
-                  </issue-assignees>
-                  <issue-priority [issue]="issue"></issue-priority> -->
+        <div class="head-wrapper-right">
+          <div class="mr1" style="border-right: 2px solid #eff0f3; padding-right: 1rem;">
+            <span>Ngày tạo</span><br>
+            <span>29/10/2021</span>
+          </div>
+        </div>
+      </div>
+      <div class="head-wrapper">
+        <div style="flex-direction: column; padding: 0;" class="head-wrapper-left">
+          <div style="width: 100%; padding: 1rem;">
+            <issue-title [task]="task"></issue-title>
+            <textarea class="desc-section" placeholder="Miêu tả cho công việc" name="" id="" cols="30" rows="10"></textarea>
+            
 
-          <!-- <div class="mt-3 pt-3 leading-loose border-t border-borderLightest text-textMedium text-13">
+          </div>
+        </div>
+        <div class="head-wrapper-right">
+          <issue-comments [task]="task"></issue-comments>
+          
+        </div>
+      </div>
+      <div class="head-wrapper">
+        <div class="head-wrapper-left" style="justify-content: center;">
+          <div><fa-icon [icon]="faCloudUploadAlt"></fa-icon><span>Thả file đính kèm ở đây hoặc từ máy</span></div>
+        </div>
+        <div class="head-wrapper-right"></div>
+      </div>
+
+      <!-- <div class="pt-4 pb-2 text-15 font-medium">Description</div> -->
+      <!-- <issue-description [issue]="issue"></issue-description> -->
+
+      <!-- <div class="pt-4 pb-2 text-15 font-medium">Comments</div> -->
+      <!-- <issue-comments [issue]="issue"></issue-comments> -->
+
+      <!-- <issue-title [task]="task"></issue-title> -->
+
+      <!-- <div class="mt-3 pt-3 leading-loose border-t border-borderLightest text-textMedium text-13">
                       <div>
                           Created - {{ issue.createdAt | date:"medium" }}
                       </div>
@@ -36,11 +57,8 @@
                           Updated - {{ issue.updatedAt | date:"medium" }}
                       </div>
                   </div> -->
-        </div>
-      </div>
     </div>
   </div>
-
 </div>
 <ng-template #loaderTmpl>
   <issue-loader></issue-loader>

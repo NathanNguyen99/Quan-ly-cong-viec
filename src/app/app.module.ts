@@ -60,7 +60,6 @@ import { IssueCommentsComponent } from './task/issue-comments/issue-comments.com
 import { IssueCommentComponent } from './task/issue-comment/issue-comment.component';
 import { IssueStatusComponent } from './task/issue-status/issue-status.component';
 import { IssueAssigneesComponent } from './task/issue-assignees/issue-assignees.component';
-import { IssuePriorityComponent } from './task/issue-priority/issue-priority.component';
 import { IssueLoaderComponent } from './task/issue-loader/issue-loader.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { ContentLoaderModule } from '@ngneat/content-loader';
@@ -102,7 +101,6 @@ import { environment } from '../environments/environment';
     IssueCommentComponent,
     IssueStatusComponent,
     IssueAssigneesComponent,
-    IssuePriorityComponent,
     IssueLoaderComponent,
     UserComponent,
     AvatarComponent,

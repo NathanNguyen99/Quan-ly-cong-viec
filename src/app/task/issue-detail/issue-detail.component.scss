@@ -1,38 +1,71 @@
 //flex w-full flex-wrap pb-16
+.task-detail {
+
+  max-width: 100%;
+  margin: auto;
+  z-index: -1;
+}
+
 .task-detail-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  .task-detail-wrapper {
     display: flex;
-    max-width: 100%;
-    flex-wrap: wrap;
-    .task-detail-wrapper {
+    //align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+
+    .head-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row;
+      align-items: flex-start;
+      position: relative;
+      overflow-wrap: break-word;
+      border-bottom: 2px solid #eff0f3;
+
+      .head-wrapper-left {
         display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
+        justify-content: flex-start;
+        //align-items: flex-start;
+        position: relative;
+        overflow-wrap: break-word;
+        width: 50%;
+        border-right: 2px solid #eff0f3;
+        padding: 1rem;
+      }
+      .head-wrapper-right {
+        display: flex;
+        position: relative;
+        overflow-wrap: break-word;
+        align-items: center;
+        padding: 1rem 0rem 1rem 1rem;
+      }
     }
-    //sm:w-full md:w-7/12 lg:w-4/6 pr-10
-    .left-wrapper {
+
+    .content-wrapper{
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
         align-items: flex-start;
         position: relative;
         overflow-wrap: break-word;
-        width: 50%;
-
-        .task-state-container {
-            display: flex;
-            justify-content: start;
-            flex-direction: row;
-        }
     }
+  }
+  //sm:w-full md:w-7/12 lg:w-4/6 pr-10
+}
 
-    .right-wrapper {
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        flex-direction: column;
-        position: relative;
-        overflow-wrap: break-word;
-        height: auto;
-    }
+.desc-section {
+  width: 100%;
+  border: none;
+  overflow: hidden; resize: none;
+  padding: 0.25rem 0.25rem;
+}
+
+.desc-section:hover {
+  border: 2px solid #eff0f3;
+  
 }

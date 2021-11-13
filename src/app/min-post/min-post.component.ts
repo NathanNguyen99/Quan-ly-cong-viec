@@ -5,9 +5,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { Observable, combineLatest } from 'rxjs';
-import { FilterQuery } from '../Shared/filter.query';
 import { FilterState } from '../Shared/filter.store';
 import { Task, TaskStatus, TaskStatusColors, TaskStatusDisplay } from '../Shared/Models/task.model';
+import { FilterQuery } from '../Shared/Services/filter.query';
+import { ProductQuery } from '../Shared/Services/product.query';
 import { ProductService } from '../Shared/Services/product.service';
 import { TaskUtil } from '../utils/task';
 
@@ -39,7 +40,6 @@ export class MinPostComponent implements OnInit {
   constructor(private _productService: ProductService, private _filterQuery: FilterQuery) {}
 
   ngOnInit(): void {
-    console.log(this.tasks$)
     combineLatest([this.tasks$, this._filterQuery.all$])
       .pipe(untilDestroyed(this))
       .subscribe(([issues, filter]) => {
@@ -51,20 +51,20 @@ export class MinPostComponent implements OnInit {
     return this.tasks.length;
   }
   
-  filterIssues(issues: Task[], filter: FilterState): Task[] {
+  filterIssues(tasks: Task[], filter: FilterState): Task[] {
     const { onlyMyIssue, ignoreResolved, searchTerm, userIds } = filter;
-    return issues.filter((issue) => {
-      const isMatchTerm = searchTerm ? TaskUtil.searchString(issue.name, searchTerm) : true;
+    return tasks.filter((task) => {
+      const isMatchTerm = searchTerm ? TaskUtil.searchString(task.name, searchTerm) : true;
 
       const isIncludeUsers = userIds.length
-        ? issue.userIds.some((userId) => userIds.includes(userId))
+        ? task.userIds.some((userId) => userIds.includes(userId))
         : true;
 
       const isMyIssue = onlyMyIssue
-        ? this.currentUserId && issue.userIds.includes(this.currentUserId)
+        ? this.currentUserId && task.userIds.includes(this.currentUserId)
         : true;
 
-      const isIgnoreResolved = ignoreResolved ? issue.status !== TaskStatus.DONE : true;
+      const isIgnoreResolved = ignoreResolved ? task.status !== TaskStatus.DONE : true;
 
       return isMatchTerm && isIncludeUsers && isMyIssue && isIgnoreResolved;
     }); 

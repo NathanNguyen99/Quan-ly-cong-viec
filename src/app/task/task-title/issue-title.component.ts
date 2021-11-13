@@ -2,7 +2,6 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Task } from 'src/app/Shared/Models/task.model';
 import { ProductService } from 'src/app/Shared/Services/product.service';
-import { ProjectService } from '../../Shared/project.service';
 
 @Component({
   selector: 'issue-title',

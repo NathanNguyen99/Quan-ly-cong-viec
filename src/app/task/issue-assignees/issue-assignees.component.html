@@ -1,21 +1,80 @@
-<div class="mt-6 mb-1 uppercase text-textMedium text-13 font-bold">
-    Assignees
+<div style="display: flex; flex-direction: row; overflow-wrap: break-word;">
+  <div style="display: inline-block;">
+  <button *ngFor="let assignee of assignees">
+    <div
+      style="border-radius: 4px; padding: 2px; border: 1px solid #eff0f3"
+      class="flex items-center"
+    >
+      <j-user [user]="assignee"></j-user>
+      <mat-icon (click)="removeUser(assignee.id)">close</mat-icon>
+    </div>
+  </button>
+  <div
+    ngbDropdown
+    container="body"
+    style="display: d-inline-block"
+    class="d-inline-block ml1"
+    #myDrop="ngbDropdown"
+  >
+    <a
+      style="
+        cursor: pointer;
+        border-radius: 4px;
+        border: 1px solid #eff0f3;
+        padding: 0.25rem;
+      "
+      ngbDropdownToggle
+      ><fa-icon [icon]="faPlusCircle"></fa-icon> Thêm</a
+    >
+    <div
+      ngbDropdownMenu
+      container="body"
+      style="padding-left: 1rem; padding-right: 1rem"
+      aria-labelledby="dropdownBasic1"
+    >
+      <button ngbDropdownItem *ngFor="let option of users">
+        <div *ngIf="!isUserSelected(option)" (click)="addUserToTask(option)">
+          <j-user [user]="option"></j-user>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
 </div>
 
-<j-button *ngFor="let assignee of assignees"
-          [className]="'btn-secondary mr-1-5 mb-2'">
-    <div class="flex items-center">
-        <j-user [user]="assignee"></j-user>
-        <svg-icon (click)="removeUser(assignee.id)"
-                  title="Remove user"
-                  
-                  [name]="'times'"
-                  class="text-textLight">
-        </svg-icon>
+<!-- <div class="col ml1" style="padding-right: 0px">
+  <div
+    ngbDropdown
+    container="body"
+    style="display: d-inline-block"
+    class="d-inline-block;"
+  >
+    <button
+      class="state-btn"
+      id="dropdownBasic1"
+      [style.background-color]="TaskStatusColors[task.status]"
+      style="color: white; width: 161.88px"
+      ngbDropdownToggle
+    >
+      {{ TaskStatusDisplay[task.status] }}
+    </button>
+    <div
+      ngbDropdownMenu
+      container="body"
+      style="padding-left: 1rem; padding-right: 1rem"
+      aria-labelledby="dropdownBasic1"
+    >
+      <button ngbDropdownItem *ngFor="let option of issueStatuses">
+        <div
+          *ngIf="!isStatusSelected(option.value)"
+          (click)="updateTask(option.value)"
+        >
+          {{ option.label }}
+        </div>
+      </button>
     </div>
-</j-button>
-
-<a class="add-more"
+  </div> -->
+<!-- <a class="add-more"
    nz-dropdown
    [nzTrigger]="'click'"
    [nzDropdownMenu]="menu">
@@ -33,9 +92,9 @@
         <ng-container *ngFor="let option of users">
             <li nz-menu-item
                 *ngIf="!isUserSelected(option)"
-                (click)="addUserToIssue(option)">
+                (click)="addUserToTask(option)">
                 <j-user [user]="option"></j-user>
             </li>
         </ng-container>
     </ul>
-</nz-dropdown-menu>
+</nz-dropdown-menu> -->

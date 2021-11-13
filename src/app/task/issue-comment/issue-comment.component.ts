@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { JComment } from 'src/app/Shared/Models/comment';
+import { Comment } from '../../Shared/Models/comment';
 import { User } from 'src/app/Shared/Models/user';
 import { AuthQuery } from 'src/app/Auth/auth.query';
-import { ProjectService } from 'src/app/Shared/project.service';
+import { ProductService } from 'src/app/Shared/Services/product.service';
 
 @Component({
   selector: 'issue-comment',
@@ -14,7 +14,7 @@ import { ProjectService } from 'src/app/Shared/project.service';
 @UntilDestroy()
 export class IssueCommentComponent implements OnInit {
   @Input() issueId: string;
-  @Input() comment: JComment;
+  @Input() comment: Comment;
   @Input() createMode: boolean;
   @ViewChild('commentBoxRef') commentBoxRef: ElementRef;
   commentControl: FormControl;
@@ -23,7 +23,7 @@ export class IssueCommentComponent implements OnInit {
 
   constructor(
     private _authQuery: AuthQuery,
-    private projectService: ProjectService
+    private productService: ProductService
   ) {}
 
   @HostListener('window:keyup', ['$event'])
@@ -42,7 +42,7 @@ export class IssueCommentComponent implements OnInit {
     this._authQuery.user$.pipe(untilDestroyed(this)).subscribe((user) => {
       this.user = user;
       if (this.createMode) {
-        this.comment = new JComment(this.issueId, this.user);
+        this.comment = new Comment(this.issueId, this.user);
       }
     });
   }
@@ -53,7 +53,7 @@ export class IssueCommentComponent implements OnInit {
 
   addComment() {
     const now = new Date();
-    this.projectService.updateIssueComment(this.issueId, {
+    this.productService.updateTaskComment(this.issueId, {
       ...this.comment,
       id: `${now.getTime()}`,
       createdAt: now.toISOString(),

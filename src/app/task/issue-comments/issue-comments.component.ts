@@ -1,5 +1,5 @@
 import { Component, Input  } from '@angular/core';
-import { JIssue } from 'src/app/Shared/Models/issue';
+import { Task } from 'src/app/Shared/Models/task.model';
 
 @Component({
   selector: 'issue-comments',
@@ -7,7 +7,7 @@ import { JIssue } from 'src/app/Shared/Models/issue';
   styleUrls: ['./issue-comments.component.scss']
 })
 export class IssueCommentsComponent {
-  @Input() issue: JIssue;
+  @Input() task: Task;
 
   constructor() {}
 }
