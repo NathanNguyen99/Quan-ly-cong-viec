@@ -84,6 +84,25 @@ export class ProductService {
     this._store.setLoading(isLoading);
   }
 
+  getProjectTest():Observable<JProject[]> {
+    return this.http
+      .get<JProject[]>(this.productsUrl + "Test/")
+      .pipe(
+        setLoading(this._store),
+        tap((project) => {
+          this._store.update((state) => ({
+            ...state,
+            ...project,
+          }));
+          
+        }),
+        catchError((error) => {
+          this._store.setError(error);
+          return of(error);
+        })
+      )
+  }
+
   getProject() {
     this.http
       .get<JProject>(this.productsUrl + "Section/")
@@ -115,7 +134,7 @@ export class ProductService {
   }
 
   updateTask(task: Task) {
-    //task.updatedAt = DateUtil.getNow();
+    task.updatedAt = DateUtil.getNow();
     this._store.update((state) => {
       const tasks = arrayUpsert(state.tasks, task.id, task);
       return {

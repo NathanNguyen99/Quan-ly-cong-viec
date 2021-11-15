@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ModalDismissReasons, NgbActiveModal, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { faSquare } from '@fortawesome/free-solid-svg-icons';
+import { faSquare, faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons';
 import { Task, TaskStatus, TaskStatusColors, TaskStatusDisplay } from '../Shared/Models/task.model';
 import { ProductService } from '../Shared/Services/product.service';
 import { User } from '../Shared/Models/user';
@@ -23,7 +23,8 @@ export class TaskComponent implements OnInit {
   fromDate!: NgbDateStruct;
   toDate!: NgbDateStruct;
   faSquare = faSquare;
-
+  faTrashAlt = faTrashAlt; 
+  faPen = faPen
   onchangeStateClicked() {
     this.changeStateClicked.emit()
   }
@@ -41,6 +42,7 @@ export class TaskComponent implements OnInit {
   task$ : Observable<Task>;
   ngOnInit(): void {
     this.issueStatuses = [
+      new IssueStatusValueTitle(TaskStatus.TODO),
       new IssueStatusValueTitle(TaskStatus.SELECTED),
       new IssueStatusValueTitle(TaskStatus.IN_PROGRESS),
       new IssueStatusValueTitle(TaskStatus.DONE)
@@ -91,15 +93,14 @@ export class TaskComponent implements OnInit {
   //   this._router.navigate(['project', 'issue', issueId]);
   // }
 
-  deleteIssue({ issueId, deleteModalRef }: DeleteIssueModel) {
-    //this.productService.deleteIssue(issueId);
-    //deleteModalRef.close();
-    this.closeModal();
+  deleteTask(issueId : string) {
+    this.productService.deleteTask(issueId);
+    this.modalService.dismissAll('cross click')
   }
 
   closeResult = '';
-  open(content:any) {
-    this.modalService.open(content, { size: 'xl' }).result.then((result) => {
+  open(content:any, size:string) {
+    this.modalService.open(content, { size: size }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

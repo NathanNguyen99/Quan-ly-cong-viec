@@ -1,0 +1,107 @@
+<form style="padding: 8px 16px" [formGroup]="taskForm">
+  <div class="form-group">
+    <label for="dateOfBirth">Tên kế hoạch</label>
+    <div class="input-group">
+      <input
+        class="form-control"
+        formControlName="name"
+        jAutofocus
+        required
+      />
+    </div>
+  </div>
+  <div class="time-wrapper">
+    <div class="time-container"><span>Từ ngày</span><br /></div>
+    <div class="time-container">
+      <span>Đến ngày</span>
+    </div>
+  </div>
+  <div class="time-wrapper">
+    <div class="time-container">
+      <div class="input-group">
+        <input
+          id="dateOfBirth"
+          class="form-control"
+          placeholder="dd-mm-yyyy"
+          name="fromDate"
+          ngbDatepicker
+          #fromDate="ngbDatepicker"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary calendar"
+            (click)="fromDate.toggle()"
+            type="button"
+          >
+            <fa-icon [icon]="faCalendarCheck"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="time-container">
+      <div class="input-group">
+        <input
+          id="dateOfBirth"
+          class="form-control"
+          placeholder="dd-mm-yyyy"
+          name="toDate"
+          ngbDatepicker
+          #toDate="ngbDatepicker"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary calendar"
+            (click)="toDate.toggle()"
+            type="button"
+          >
+            <fa-icon [icon]="faCalendarCheck"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-1 form-group">
+    <label for="dateOfBirth">Miêu tả</label>
+    <div class="input-group">
+      <textarea
+        id="dateOfBirth"
+        class="form-control"
+        placeholder="Miêu tả"
+        type="text"
+        name="productDesc"
+        cdkTextareaAutosize
+      ></textarea>
+    </div>
+  </div>
+  <div class="mt-1 form-group">
+    <label class="label">Người thực hiện </label>
+    <task-assignees [control]="f.userIds" [users]="assignees$ | async">
+    </task-assignees>
+  </div>
+  <div>
+    <span>File Đính kèm</span>
+
+    <nz-upload
+    nzType="drag"
+    [nzMultiple]="true"
+    nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+    (nzChange)="handleChange($event)"
+  >
+    <p class="ant-upload-drag-icon">
+      <i nz-icon nzType="inbox"></i>
+    </p>
+    <p class="ant-upload-text">Ấn hoặc kéo thả file ở đây để tải lên</p>
+  </nz-upload>
+  </div>
+  <div class="mt-5 form-group form-action">
+    <j-button
+      className="btn-primary mr-2"
+      type="submit"
+      [disabled]="taskForm?.invalid"
+      (click)="submitForm()" style="border: none;"
+    >
+      Tạo công việc
+    </j-button>
+    <j-button className="btn-empty" (click)="cancel()"> Hủy </j-button>
+  </div>
+</form>

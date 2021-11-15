@@ -54,7 +54,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SubProductService } from './Shared/Services/sub-product.service';
 import { IssueDetailComponent } from './task/issue-detail/issue-detail.component';
-import { IssueDeleteModalComponent } from './task/issue-delete-modal/issue-delete-modal.component';
 import { IssueTitleComponent } from './task/task-title/issue-title.component';
 import { IssueCommentsComponent } from './task/issue-comments/issue-comments.component';
 import { IssueCommentComponent } from './task/issue-comment/issue-comment.component';
@@ -77,7 +76,11 @@ import { InputComponent } from './input/input.component';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { environment } from '../environments/environment';
-
+import { AddTaskModalComponent } from './add-task-modal/add-task-modal.component';
+import { TaskAssigneesComponent } from './add-task-modal/task-assignees/task-assignees.component';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +98,6 @@ import { environment } from '../environments/environment';
     ControlBarComponent,
     MainPostDetailComponent,
     IssueDetailComponent,
-    IssueDeleteModalComponent,
     IssueTitleComponent,
     IssueCommentsComponent,
     IssueCommentComponent,
@@ -107,6 +109,8 @@ import { environment } from '../environments/environment';
     ButtonComponent,
     SvgIconComponent,
     InputComponent,
+    AddTaskModalComponent,
+    TaskAssigneesComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,7 +128,9 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     MatDialogModule,
     FontAwesomeModule,
+    NzUploadModule,
     NgbModule,
+    NzMessageModule,
     NzModalModule,
     Ng2SearchPipeModule,
     HttpClientInMemoryWebApiModule.forRoot(DataService),
@@ -136,6 +142,7 @@ import { environment } from '../environments/environment';
     DragDropModule,
     environment.production ? [] : AkitaNgDevtools,
     AkitaNgRouterStoreModule,
+    NzSelectModule
   ],
   providers: [
     MultilevelMenuService,

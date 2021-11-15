@@ -29,8 +29,6 @@ export class DataService implements InMemoryDbService {
           name: 'Phòng Dân sự',
           fromDate: '17/8/21',
           toDate: '17/9/21',
-          totalTask: 3,
-          doneTask: 2,
           id: '1',
         },
         {
@@ -38,8 +36,6 @@ export class DataService implements InMemoryDbService {
           name: 'Phòng R & D',
           fromDate: '12/6/21',
           toDate: '8/7/21',
-          totalTask: 6,
-          doneTask: 4,
           id: '2',
         },
         {
@@ -47,8 +43,6 @@ export class DataService implements InMemoryDbService {
           name: 'Phòng kinh doanh',
           fromDate: '18/2/21',
           toDate: '18/12/21',
-          totalTask: 2,
-          doneTask: 1,
           id: '3',
         },
         {
@@ -56,8 +50,6 @@ export class DataService implements InMemoryDbService {
           name: 'Phòng kỹ thuật',
           fromDate: '18/2/21',
           toDate: '18/12/21',
-          totalTask: 4,
-          doneTask: 1,
           id: '4',
         },
       ],
@@ -73,10 +65,12 @@ export class DataService implements InMemoryDbService {
       ],
       Section: {
         id: '140892',
-        name: 'Angular Jira Clone',
+        name: 'Phòng Dân sự',
         url: 'https://github.com/trungk18/jira-clone-angular',
         description:
           'A Jira clone app built with Angular 10, Akita and ng-zorro - by trungk18',
+        fromDate: '17/8/21',
+        toDate: '17/9/21',
         category: 'Software',
         createdAt: '2020-06-12T16:00:00.000Z',
         updatedAt: '2020-06-13T16:00:00.000Z',
@@ -124,7 +118,10 @@ export class DataService implements InMemoryDbService {
             toDate: '8/7/21',
             id: '1',
             status: 'Done',
-            userIds: ['d65047e5-f4cf-4caa-9a38-6073dcbab7d1', '7ac265f9-b9ac-443f-a2b2-795682e579a4'],
+            userIds: [
+              'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
+              '7ac265f9-b9ac-443f-a2b2-795682e579a4',
+            ],
             listPosition: 1,
           },
           {
@@ -142,7 +139,10 @@ export class DataService implements InMemoryDbService {
             toDate: '8/7/21',
             id: '3',
             status: 'Done',
-            userIds: ['d65047e5-f4cf-4caa-9a38-6073dcbab7d1', '081ccaa1-5595-4621-8074-ede4927e67b0'],
+            userIds: [
+              'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
+              '081ccaa1-5595-4621-8074-ede4927e67b0',
+            ],
             listPosition: 1,
           },
           {
@@ -151,7 +151,11 @@ export class DataService implements InMemoryDbService {
             toDate: '8/7/21',
             id: '4',
             status: 'Done',
-            userIds: ['d65047e5-f4cf-4caa-9a38-6073dcbab7d1', '94502aad-c97f-43e1-a9d1-28cf3e4937a7', '610451aa-10c8-4d7e-9363-311357c0b0dd'],
+            userIds: [
+              'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
+              '94502aad-c97f-43e1-a9d1-28cf3e4937a7',
+              '610451aa-10c8-4d7e-9363-311357c0b0dd',
+            ],
             listPosition: 1,
           },
           {
@@ -189,6 +193,266 @@ export class DataService implements InMemoryDbService {
           },
         ],
       },
+      Test: [{
+        id: '140892',
+        name: 'Phòng Dân sự',
+        url: 'https://github.com/trungk18/jira-clone-angular',
+        description:
+          'A Jira clone app built with Angular 10, Akita and ng-zorro - by trungk18',
+        fromDate: '17/8/21',
+        toDate: '17/9/21',
+        category: 'Software',
+        createdAt: '2020-06-12T16:00:00.000Z',
+        updatedAt: '2020-06-13T16:00:00.000Z',
+        users: [
+          {
+            id: 'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
+            name: 'Trung Vo',
+            avatarUrl:
+              'https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_48/v1593253478/trung-vo_bioxmc.png',
+            projectId: '140892',
+          },
+          {
+            id: '7ac265f9-b9ac-443f-a2b2-795682e579a4',
+            name: 'Iron Man',
+            avatarUrl:
+              'https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_48/v1592405732/ironman_c3jrbc.jpg',
+            projectId: '140892',
+          },
+          {
+            id: '94502aad-c97f-43e1-a9d1-28cf3e4937a7',
+            name: 'Captain',
+            avatarUrl:
+              'https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_48/v1592405732/captain_e8s9nk.jpg',
+            projectId: '140892',
+          },
+          {
+            id: '610451aa-10c8-4d7e-9363-311357c0b0dd',
+            name: 'Thor',
+            avatarUrl:
+              'https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_48/v1592405731/thor_juqwzf.jpg',
+            projectId: '140892',
+          },
+          {
+            id: '081ccaa1-5595-4621-8074-ede4927e67b0',
+            name: 'Spider Man',
+            avatarUrl:
+              'https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_48/v1592405731/spiderman_zlrtx0.jpg',
+            projectId: '140892',
+          },
+        ],
+        tasks: [
+          {
+            name: 'Quản lý thời gian abcd',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '1',
+            status: 'Done',
+            userIds: [
+              'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
+              '7ac265f9-b9ac-443f-a2b2-795682e579a4',
+            ],
+            listPosition: 1,
+          },
+          {
+            name: 'Quản lý công trình liên tỉnh',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '2',
+            status: 'Done',
+            userIds: ['081ccaa1-5595-4621-8074-ede4927e67b0'],
+            listPosition: 2,
+          },
+          {
+            name: 'Quản lý tình huống',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '3',
+            status: 'Done',
+            userIds: [
+              'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
+              '081ccaa1-5595-4621-8074-ede4927e67b0',
+            ],
+            listPosition: 1,
+          },
+          {
+            name: 'Kiểm kê số lượng router',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '4',
+            status: 'Done',
+            userIds: [
+              'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
+              '94502aad-c97f-43e1-a9d1-28cf3e4937a7',
+              '610451aa-10c8-4d7e-9363-311357c0b0dd',
+            ],
+            listPosition: 1,
+          },
+          {
+            name: 'Công trình liên địa phươhng',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '5',
+            status: 'InProgress',
+            userIds: ['d65047e5-f4cf-4caa-9a38-6073dcbab7d1'],
+            listPosition: 1,
+          },
+          {
+            name: 'ACBSDSD',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '6',
+            status: 'InProgress',
+            userIds: ['610451aa-10c8-4d7e-9363-311357c0b0dd'],
+          },
+          {
+            name: 'Thanh toán lệ phí',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '7',
+            status: 'InProgress',
+            userIds: ['d65047e5-f4cf-4caa-9a38-6073dcbab7d1'],
+          },
+          {
+            name: 'acassesafasfasfasfasf',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '8',
+            status: 'Selected',
+            userIds: ['d65047e5-f4cf-4caa-9a38-6073dcbab7d1'],
+          },
+        ],
+      },
+      {
+        id: '102514',
+        name: 'Phòng HR ádasdsadsadassasg',
+        url: 'https://github.com/trungk18/jira-clone-angular',
+        description:
+          'A Jira clone app built with Angular 10, Akita and ng-zorro - by trungk18',
+        fromDate: '17/8/21',
+        toDate: '17/9/21',
+        category: 'Software',
+        createdAt: '2020-06-12T16:00:00.000Z',
+        updatedAt: '2020-06-13T16:00:00.000Z',
+        users: [
+          {
+            id: 'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
+            name: 'Trung Vo',
+            avatarUrl:
+              'https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_48/v1593253478/trung-vo_bioxmc.png',
+            projectId: '140892',
+          },
+          {
+            id: '7ac265f9-b9ac-443f-a2b2-795682e579a4',
+            name: 'Iron Man',
+            avatarUrl:
+              'https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_48/v1592405732/ironman_c3jrbc.jpg',
+            projectId: '140892',
+          },
+          {
+            id: '94502aad-c97f-43e1-a9d1-28cf3e4937a7',
+            name: 'Captain',
+            avatarUrl:
+              'https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_48/v1592405732/captain_e8s9nk.jpg',
+            projectId: '140892',
+          },
+          {
+            id: '610451aa-10c8-4d7e-9363-311357c0b0dd',
+            name: 'Thor',
+            avatarUrl:
+              'https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_48/v1592405731/thor_juqwzf.jpg',
+            projectId: '140892',
+          },
+          {
+            id: '081ccaa1-5595-4621-8074-ede4927e67b0',
+            name: 'Spider Man',
+            avatarUrl:
+              'https://res.cloudinary.com/dvujyxh7e/image/upload/c_scale,w_48/v1592405731/spiderman_zlrtx0.jpg',
+            projectId: '140892',
+          },
+        ],
+        tasks: [
+          {
+            name: 'Quản lý thời gian  ',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '1',
+            status: 'Done',
+            userIds: [
+              'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
+              '7ac265f9-b9ac-443f-a2b2-795682e579a4',
+            ],
+            listPosition: 1,
+          },
+          {
+            name: 'Quản lý công trình liên tỉnh',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '2',
+            status: 'Done',
+            userIds: ['081ccaa1-5595-4621-8074-ede4927e67b0'],
+            listPosition: 2,
+          },
+          {
+            name: 'Quản lý tình huống',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '3',
+            status: 'Done',
+            userIds: [
+              'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
+              '081ccaa1-5595-4621-8074-ede4927e67b0',
+            ],
+            listPosition: 1,
+          },
+          {
+            name: 'Kiểm kê số lượng router',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '4',
+            status: 'Done',
+            userIds: [
+              'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
+              '94502aad-c97f-43e1-a9d1-28cf3e4937a7',
+              '610451aa-10c8-4d7e-9363-311357c0b0dd',
+            ],
+            listPosition: 1,
+          },
+          {
+            name: 'Công trình liên địa phươhng',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '5',
+            status: 'InProgress',
+            userIds: ['d65047e5-f4cf-4caa-9a38-6073dcbab7d1'],
+            listPosition: 1,
+          },
+          {
+            name: 'ACBSDSD',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '6',
+            status: 'InProgress',
+            userIds: ['610451aa-10c8-4d7e-9363-311357c0b0dd'],
+          },
+          {
+            name: 'Thanh toán lệ phí',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '7',
+            status: 'InProgress',
+            userIds: ['d65047e5-f4cf-4caa-9a38-6073dcbab7d1'],
+          },
+          {
+            name: 'acassesafasfasfasfasf',
+            fromDate: '12/6/21',
+            toDate: '8/7/21',
+            id: '8',
+            status: 'Selected',
+            userIds: ['d65047e5-f4cf-4caa-9a38-6073dcbab7d1'],
+          },
+        ],
+      }],
     };
   }
 }

@@ -7,8 +7,10 @@ import {
   faComment, faChevronCircleRight, faChevronCircleDown
 } from '@fortawesome/free-solid-svg-icons';
 import { Product } from '../Shared/Models/product.model';
+import { Product as ProductTest } from '../Shared/Models/product';
 import { SubProductService } from '../Shared/Services/sub-product.service';
 import { subProduct } from '../Shared/Models/subProduct.model';
+import { ProductService } from '../Shared/Services/product.service';
 @Component({
   selector: 'app-main-post',
   templateUrl: './main-post.component.html',
@@ -46,9 +48,16 @@ export class MainPostComponent {
   add = false;
   subproducts!: subProduct[];
 
+  subproductstest: ProductTest[];
+
   private getProducts() {
     this.subProduct.getProducts().subscribe(data => this.subproducts = data);
   }
+
+  private getProductsTest() {
+    this._productTest.getProjectTest().subscribe(data => this.subproductstest = data);
+  }
+
 
   addProduct() {
     const data = {
@@ -128,7 +137,7 @@ export class MainPostComponent {
   }
   // ---------------------------------
 
-  constructor(private modalService: NgbModal, private subProduct: SubProductService) {}
+  constructor(private modalService: NgbModal, private subProduct: SubProductService, private _productTest: ProductService) {}
 
   public updateMyDate() {
     this.productEdit.emit(this.productItem);
@@ -151,6 +160,7 @@ export class MainPostComponent {
     this.shoud_open = !this.shoud_open;
   }
   
-
-  ngOnInit(): void {this.getProducts();}
+  //Change in main-post, remove all the test file
+  //Replace subproduct -> subproductstest
+  ngOnInit(): void {this.getProducts(); this.getProductsTest()}
 }

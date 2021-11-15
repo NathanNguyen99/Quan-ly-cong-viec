@@ -1,0 +1,19 @@
+.time-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    z-index: -1;
+  }
+  
+  .time-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    flex-direction: row;
+    padding: 0;
+    overflow-wrap: break-word;
+    width: 50%;
+    height: auto;
+  }

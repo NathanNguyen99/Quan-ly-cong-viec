@@ -26,19 +26,19 @@ export class ProductQuery extends Query<ProductState> {
 
   issueByStatusSorted$ = (status: TaskStatus): Observable<Task[]> => {
     return this.tasks$.pipe(
-      map(issues => {
-        let filteredIssues = issues
+      map(tasks => {
+        let filteredTasks = tasks
           .filter(x => x.status === status)
           .sort((a, b) => a.listPosition - b.listPosition)
-        return filteredIssues
+        return filteredTasks
       })
     )
   }
 
-  issueById$(issueId: string){
+  issueById$(taskId: string){
     return this.tasks$.pipe(
       delay(500),
-      map((issues) => issues.find(x => x.id === issueId))
+      map((tasks) => tasks.find(x => x.id === taskId))
     );
   }
 

@@ -23,10 +23,22 @@
               >
             </div>
           </div>
-          <div class="down-content-container">
-            <img class="user-icon ml1" src="../../assets/messi.jpg" alt="" />
-            <img class="user-icon ml1" src="../../assets/messi.jpg" alt="" />
-            <span class="number-of-task ml1">10 người theo dõi</span>
+          <div class="down-content-container ml1">
+            <div class="flex items-center ml-1" style="width: 150px">
+              <j-avatar
+                *ngFor="let user of assignees"
+                [className]="'shadow-outline-white -ml-1'"
+                [size]="24"
+                [ngbPopover]="popContent"
+                [openDelay]="300"
+                [closeDelay]="400"
+                triggers="mouseenter:mouseleave"
+                [avatarUrl]="user.avatarUrl"
+                ><ng-template #popContent>{{ user.name }}</ng-template></j-avatar
+              >
+    
+              <!-- <span class="ml0-5">+2</span> -->
+            </div>
           </div>
         </div>
       </div>
@@ -100,6 +112,8 @@
       </div>
     </div>
   </div>
+  <button class="add-task-button" (click)="openCreateIssueModal()"><fa-icon [icon]="faPlusCircle"></fa-icon> Thêm công việc</button>
+
   <div *ngIf="shoud_open">
     <div
       *ngFor="let status of taskStatuses"

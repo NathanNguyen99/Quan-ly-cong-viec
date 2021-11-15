@@ -130,20 +130,16 @@
   color: white;
 }
 
-.inProgress-btn:hover {
-  background-color: #2bd9fe;
-  color: white;
-  border-radius: 4px;
+.delete-button {
+  background-color: transparent;
+  padding: 5px 10px;
 }
 
-.alert-btn:hover {
-  color: white;
-  background-color: #db504a;
-  border-radius: 4px;
+.delete-button:hover {
+  background-color: white;
 }
 
-.complete-btn:hover {
-  color: white;
-  background-color: #6bc950;
-  border-radius: 4px;
+.edit-button {
+  padding: 0.1rem 0.2rem;
+  border: 1px solid rgb(168, 168, 168);
 }

@@ -148,3 +148,13 @@
   }
 }
 
+.add-task-button {
+  background-color: #D3D3D3;
+  padding: 2px 5px  ;
+  border-radius: 6px;
+  transition: all 0.15s ease-in-out;
+}
+.add-task-button:hover{
+  color: #007cce;
+  background-color: white;
+}

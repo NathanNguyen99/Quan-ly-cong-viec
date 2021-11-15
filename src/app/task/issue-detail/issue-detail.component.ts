@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { IssueDeleteModalComponent } from '../issue-delete-modal/issue-delete-modal.component';
 import { DeleteIssueModel } from '../../Shared/Models/ui-model/delete-issue-model';
 import { Task } from 'src/app/Shared/Models/task.model';
 import { ProductQuery } from 'src/app/Shared/Services/product.query';
@@ -25,21 +24,6 @@ export class IssueDetailComponent implements OnInit{
   constructor(public productQuery: ProductQuery, private _modalService: NzModalService) {}
   ngOnInit(): void {
     console.log(this.task)
-  }
-
-  openDeleteIssueModal() {
-    this._modalService.create({
-      nzContent: IssueDeleteModalComponent,
-      nzClosable: false,
-      nzFooter: null,
-      nzStyle: {
-        top: '140px'
-      },
-      nzComponentParams: {
-        issueId: this.task.id,
-        onDelete: this.onDelete
-      }
-    });
   }
 
   closeModal() {
