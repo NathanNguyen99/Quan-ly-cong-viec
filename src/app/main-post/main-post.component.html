@@ -95,7 +95,7 @@
         </div>
       </div>
       <div *ngIf="shoud_open">
-        <app-sub-post *ngFor="let subproduct of subproductstest" (setSubProductEdit)="setProductEdit($event)" [subProductItem]="subproduct"></app-sub-post>
+        <app-sub-post *ngFor="let subproduct of subproducts" (setSubProductEdit)="setProductEdit($event)" [subProductItem]="subproduct"></app-sub-post>
       </div>
       
     </div>
