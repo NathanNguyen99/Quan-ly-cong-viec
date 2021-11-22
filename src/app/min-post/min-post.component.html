@@ -2,16 +2,25 @@
   <div class="min-post-container">
     <div class="min-post-wrapper">
       <div class="min-post-content-container">
-        <div class="head-section" [style.color]="TaskStatusColors[status]" style=" font-size: 22px">
+        <div
+          class="head-section"
+          [style.color]="TaskStatusColors[status]"
+          style="font-size: 22px"
+        >
           <fa-icon
             (click)="getDoneTask_openFunc()"
-            [icon]="getDoneTask_open ? faChevronCircleDown : faChevronCircleRight"
+            [icon]="
+              getDoneTask_open ? faChevronCircleDown : faChevronCircleRight
+            "
           ></fa-icon>
         </div>
 
-        <div class="head-section" [style.background-color]="TaskStatusColors[status]">      
-          <span class="head">{{ TaskStatusDisplay[status] }}</span>      
-          <span class="number-of-task m5">{{tasksCount}} công việc</span>
+        <div
+          class="head-section"
+          [style.background-color]="TaskStatusColors[status]"
+        >
+          <span class="head">{{ TaskStatusDisplay[status] }}</span>
+          <span class="number-of-task m5">{{ tasksCount }} công việc</span>
         </div>
       </div>
       <div class="right-min-post-content-container">
@@ -21,9 +30,20 @@
         <span class="title mr1">ĐẾN NGÀY</span>
       </div>
     </div>
-    <div *ngIf="getDoneTask_open">
-      <app-task *ngFor="let task of tasks"
-      [task]="task"></app-task>
+    <div
+      *ngIf="getDoneTask_open"
+      cdkDropList
+      [cdkDropListData]="tasks"
+      [id]="status"
+      (cdkDropListDropped)="drop($event)"
+      class="flex" style="flex-direction: column;"
+    >
+      <app-task
+        *ngFor="let task of tasks"
+        [task]="task"
+        cdkDrag
+        [cdkDragData]="task"
+      ></app-task>
     </div>
   </div>
 </div>

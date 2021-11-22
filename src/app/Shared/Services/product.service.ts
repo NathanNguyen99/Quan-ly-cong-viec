@@ -133,6 +133,16 @@ export class ProductService {
     });
   }
 
+  deleteTask2(entityId: string, issueId: string) {
+    this._store.update(entityId, state => {
+      const tasks = arrayRemove(state.tasks, issueId);
+      return {
+        ...state,
+        tasks,
+      };
+    });
+  }
+
   updateTask(task: Task) {
     task.updatedAt = DateUtil.getNow();
     this._store.update((state) => {
@@ -144,6 +154,16 @@ export class ProductService {
     });
   }
 
+  updateTask2(entityId: string, task: Task) {
+    task.updatedAt = DateUtil.getNow();
+    this._store.update(entityId, state => {
+      const tasks = arrayUpsert(state.tasks, task.id, task);
+      return {
+        ...state,
+        tasks,
+      };
+    });
+  }
   updateTaskComment(taskId: string, comment: Comment) {
     const allIssues = this._store.getValue().tasks;
     const task = allIssues.find((x) => x.id === taskId);

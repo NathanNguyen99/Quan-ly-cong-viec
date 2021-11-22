@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import {
   faChevronCircleRight,
@@ -50,7 +51,33 @@ export class MinPostComponent implements OnInit {
   get tasksCount(): number {
     return this.tasks.length;
   }
-  
+
+  drop(event: CdkDragDrop<Task[]>) {
+    const newTask: Task = { ...event.item.data };
+    const newTasks = [...event.container.data];
+    if (event.previousContainer === event.container) {
+      moveItemInArray(newTasks, event.previousIndex, event.currentIndex);
+      this.updateListPosition(newTasks);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        newTasks,
+        event.previousIndex,
+        event.currentIndex
+      );
+      this.updateListPosition(newTasks);
+      newTask.status = event.container.id as TaskStatus;
+      this._productService.updateTask(newTask);
+    }
+  }
+
+  private updateListPosition(newList: Task[]) {
+    newList.forEach((issue, idx) => {
+      const newIssueWithNewPosition = { ...issue, listPosition: idx + 1 };
+      this._productService.updateTask(newIssueWithNewPosition);
+    });
+  }
+
   filterIssues(tasks: Task[], filter: FilterState): Task[] {
     const { onlyMyIssue, ignoreResolved, searchTerm, userIds } = filter;
     return tasks.filter((task) => {
@@ -69,102 +96,4 @@ export class MinPostComponent implements OnInit {
       return isMatchTerm && isIncludeUsers && isMyIssue && isIgnoreResolved;
     }); 
   }
-
-  // task = {
-  //   name: '',
-  //   fromDate: '',
-  //   toDate: '',
-  //   id: 0,
-  //   color: ''
-  // };
-  // edit = true;
-  // add = false;
-  // DoneTasks!: Task[];
-  // inProgressTasks!: Task[];
-  // alertTasks!: Task[];
-
-  // get DoneTasksCount(): number {
-  //   return this.DoneTasks.length;
-  // }
-  // get inProgressTasksCount(): number {
-  //   return this.inProgressTasks.length;
-  // }
-  // get alertTasksCount(): number {
-  //   return this.alertTasks.length;
-  // }
-  
-  // addTask(taskname: string, task:Task,) {
-  //   const data = {
-  //     id: task.id,
-  //     name: task.name,
-  //     fromDate: task.fromDate,
-  //     toDate: task.toDate,
-  //     color: task.color
-  //   };
-  //   this.productService.createTask(taskname, data).subscribe(response => {
-  //     console.log("Create: "+ response)
-  //   });
-  // }
-
-  // removeTask(taskname: string, task: Task) {
-  //   const id = task.id;
-  //   console.log(task)
-  //   this.productService.deleteTask(taskname, id).subscribe(subproduct => console.log("Delete" + subproduct));
-  // }
-
-  // test(color:any, parentColor: any, task:any) {
-  //   // Example/ current: Dang thuc hien -> new: Hoan thanh
-  //   if(color != parentColor) {
-  //     switch(color) {
-  //       case "#2BD9FE":
-  //         this.addTask("inProgressTaskSection", task)
-  //         this.inProgressTask()
-  //         break;
-  //       case "#6bc950":
-  //         this.addTask("doneTaskSection", task)  
-  //         this.getDoneTask()
-  //         break;    
-  //       case "#DB504A":
-  //         this.addTask("alertTaskSection", task)
-  //         this.alertTask()      
-  //         break;
-  //     } 
-  //     switch(parentColor) {
-  //       case "#2BD9FE":
-  //         this.removeTask("inProgressTaskSection", task)
-  //         this.inProgressTask()
-  //         break;
-  //       case "#6bc950":
-  //         this.removeTask("doneTaskSection", task)  
-  //         this.getDoneTask()
-  //         break;
-  //       case "#DB504A":
-  //         this.removeTask("alertTaskSection", task)    
-  //         this.alertTask()      
-  //         break;
-  //     }  
-  //   }
-  // }
-
-  // private getDoneTask() {
-  //   this.productService
-  //     .getTask("doneTaskSection")
-  //     .subscribe((data) => (this.DoneTasks = data));
-  // }
-
-  // private inProgressTask() {
-  //   this.productService
-  //     .getTask("inProgressTaskSection")
-  //     .subscribe((data) => (this.inProgressTasks = data));
-  // }
-
-  // private alertTask() {
-  //   this.productService
-  //     .getTask("alertTaskSection")
-  //     .subscribe((data) => (this.alertTasks = data));
-  // }
-
-  // constructor(private productService: ProductService) {}
-
-  // ngOnInit(): void {this.getDoneTask(); this.inProgressTask(); this.alertTask()}
 }

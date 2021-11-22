@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, children: [
     {path: 'dashboard', component: MainPostComponent}
   ] },
-  {path: 'reset', component: ChangePasswordComponent, canActivate: [AuthGuard] },
+  {path: 'reset', component: ChangePasswordComponent },
 ];
 
 @NgModule({

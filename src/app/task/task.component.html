@@ -1,16 +1,18 @@
 <div
   class="task"
   style="margin-left: 32px; border-radius: 4px; z-index: -1"
-  *ngIf="this.task"
+  *ngIf="task"
 >
   <div class="task-container">
-    <div class="task-wrapper">
+    <!-- <fa-icon [icon]="faGripVertical" cdkDragHandle></fa-icon> -->
+    <div class="task-wrapper" >
       <div class="task-content-container">
         <fa-icon
           class="mr1"
           [style.color]="TaskStatusColors[task.status]"
           [icon]="faSquare"
         ></fa-icon>
+    
         <span (click)="open(content, 'xl')">{{ this.task.name }}</span>
         <!-- nz-tooltip
             [nzTooltipMouseEnterDelay]="0.3"
@@ -102,26 +104,57 @@
 <ng-template #deletecontent let-modal2>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-title">Xóa công việc</h4>
-    <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal2.dismiss('Cross click')">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close button"
+      aria-describedby="modal-title"
+      (click)="modal2.dismiss('Cross click')"
+    >
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <p><strong>Bạn có chắc chắn muốn xóa công việc <span class="text-primary">{{task.name}}</span> ?</strong></p>
-    <p>Tất cả thông tin liên quan đến công việc này sẽ bị xóa.
-    <span class="text-danger">Hành động này không thể hoàn tác</span>
+    <p>
+      <strong
+        >Bạn có chắc chắn muốn xóa công việc
+        <span class="text-primary">{{ task.name }}</span> ?</strong
+      >
+    </p>
+    <p>
+      Tất cả thông tin liên quan đến công việc này sẽ bị xóa.
+      <span class="text-danger">Hành động này không thể hoàn tác</span>
     </p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="modal2.dismiss('cancel click')">Hủy</button>
-    <button type="button" ngbAutofocus class="btn btn-danger" (click)="deleteTask(task.id);">Xóa</button>
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="modal2.dismiss('cancel click')"
+    >
+      Hủy
+    </button>
+    <button
+      type="button"
+      ngbAutofocus
+      class="btn btn-danger"
+      (click)="deleteTask(task.id)"
+    >
+      Xóa
+    </button>
   </div>
-</ng-template >
+</ng-template>
 
 <ng-template #content let-modal>
   <div
     class="modal-header"
-    style="background-color: #eff0f3; border: none; border-radius: 4px; padding-top: 8px; padding-bottom: 8px;"
+    style="
+      background-color: #eff0f3;
+      border: none;
+      border-radius: 4px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    "
   >
     <button
       type="button"
@@ -130,11 +163,11 @@
       (click)="open(deletecontent, '')"
       style="border-radius: 10px; outline: none"
       [ngbPopover]="anotherpopContent"
-            [openDelay]="300"
-            [closeDelay]="400"
-            triggers="mouseenter:mouseleave"
+      [openDelay]="300"
+      [closeDelay]="400"
+      triggers="mouseenter:mouseleave"
     >
-      <fa-icon style="color: rgb(112, 112, 112);" [icon]="faTrashAlt"></fa-icon>
+      <fa-icon style="color: rgb(112, 112, 112)" [icon]="faTrashAlt"></fa-icon>
     </button>
     <ng-template #anotherpopContent>Xóa công việc</ng-template>
 

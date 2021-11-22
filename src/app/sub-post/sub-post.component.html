@@ -114,12 +114,15 @@
   </div>
   <button class="add-task-button" (click)="openCreateIssueModal()"><fa-icon [icon]="faPlusCircle"></fa-icon> Thêm công việc</button>
 
-  <div *ngIf="shoud_open">
-    <div
-      *ngFor="let status of taskStatuses"
-      app-min-post
-      [status]="status"
-      [currentUserId]="authQuery.userId$ | async"
-      [tasks$]="projectQuery.issueByStatusSorted$(status)"></div>
+  <div *ngIf="shoud_open" >
+    <div cdkDropListGroup>
+      <div app-min-post
+        *ngFor="let status of taskStatuses"
+        board-dnd-list
+        [status]="status"
+        [currentUserId]="authQuery.userId$ | async"
+        [tasks$]="projectQuery.issueByStatusSorted$(status)"></div>
+
+    </div>
   </div>
 </div>

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductQuery extends Query<ProductState> {
+export class ProductQuery extends QueryEntity<ProductState> {
   constructor(protected store: ProductStore) {
     super(store);
   }
@@ -16,7 +16,6 @@ export class ProductQuery extends Query<ProductState> {
   all$ = this.select();
   tasks$ = this.select("tasks");
   users$ = this.select('users');
-
   
   lastIssuePosition = (status: TaskStatus): number => {
     const raw = this.store.getValue();

@@ -11,6 +11,8 @@ import { Product as ProductTest } from '../Shared/Models/product';
 import { SubProductService } from '../Shared/Services/sub-product.service';
 import { subProduct } from '../Shared/Models/subProduct.model';
 import { ProductService } from '../Shared/Services/product.service';
+import { Observable } from 'rxjs';
+import { ProductQuery } from '../Shared/Services/product.query';
 @Component({
   selector: 'app-main-post',
   templateUrl: './main-post.component.html',
@@ -48,14 +50,17 @@ export class MainPostComponent {
   add = false;
   subproducts!: subProduct[];
 
-  subproductstest: ProductTest[];
+  article$: Observable<Product>;
+  articleId: string;
+
+  constructor(private modalService: NgbModal, private subProduct: SubProductService, private _productTest: ProductService, private _productQuery: ProductQuery) {}
+
+  ngOnInit(): void {this.getProducts();
+    
+  }
 
   private getProducts() {
     this.subProduct.getProducts().subscribe(data => this.subproducts = data);
-  }
-
-  private getProductsTest() {
-    this._productTest.getProjectTest().subscribe(data => this.subproductstest = data);
   }
 
 
@@ -74,44 +79,6 @@ export class MainPostComponent {
       this.getProducts();
     });
   }
-
-  setProductEdit(subproduct: subProduct) {
-    this.subproduct.id = subproduct.id;
-    this.subproduct.createdAt = subproduct.createdAt;
-    this.subproduct.name = subproduct.name;
-    this.subproduct.fromDate = subproduct.fromDate;
-    this.subproduct.toDate = subproduct.toDate;
-    this.subproduct.totalTask = subproduct.totalTask;
-    this.subproduct.doneTask = subproduct.doneTask;
-    this.edit = false;
-    this.add = true;
-  }
-
-  resetValues() {
-    this.subproduct.name = "";
-    this.subproduct.createdAt = "";
-    this.subproduct.id = null;
-    this.subproduct.fromDate = "";
-    this.subproduct.toDate = "";
-    this.subproduct.totalTask = 0;
-    this.subproduct.doneTask = 0;
-    this.edit = true;
-    this.add = false;
-  }
-
-  removeProduct(product: subProduct) {
-    const id = product.id;
-    console.log(product)
-    this.subProduct.deleteProduct(id).subscribe(subproduct => console.log(subproduct));
-    this.getProducts()
-  }
-
-  updateProduct(){
-    this.subProduct.editProduct(this.subproduct).subscribe(response => console.log(response));
-    this.getProducts()
-    this.resetValues()
-  }
-
   // ---------------------------------
   //StartDate format for ngbdatepicker
   obj = {
@@ -137,7 +104,6 @@ export class MainPostComponent {
   }
   // ---------------------------------
 
-  constructor(private modalService: NgbModal, private subProduct: SubProductService, private _productTest: ProductService) {}
 
   public updateMyDate() {
     this.productEdit.emit(this.productItem);
@@ -162,5 +128,4 @@ export class MainPostComponent {
   
   //Change in main-post, remove all the test file
   //Replace subproduct -> subproductstest
-  ngOnInit(): void {this.getProducts(); this.getProductsTest()}
 }

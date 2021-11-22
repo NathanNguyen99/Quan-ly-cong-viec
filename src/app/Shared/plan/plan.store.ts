@@ -1,14 +1,17 @@
 import { Plan } from 'src/app/interface/plan';
-import { EntityStore, StoreConfig } from '@datorama/akita';
+import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
 import { Injectable } from '@angular/core';
+import { planInt } from 'src/app/interface/planInt';
 
-export type PlanState = Plan;
+// export type PlanState = Plan;
 
-function createInitialState(): PlanState {
-  return {
-    plans: [],
-  } as PlanState;
-}
+// function createInitialState(): PlanState {
+//   return {
+//     plans: [],
+//   } as PlanState;
+// }
+
+export interface PlanState extends EntityState<planInt> {}
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +21,6 @@ function createInitialState(): PlanState {
 })
 export class PlanStore extends EntityStore<PlanState> {
   constructor() {
-    super(createInitialState());
+    super();
   }
 }

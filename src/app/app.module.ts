@@ -81,6 +81,8 @@ import { TaskAssigneesComponent } from './add-task-modal/task-assignees/task-ass
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,6 +116,8 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
   ],
   imports: [
     BrowserModule,
+    NzIconModule,
+    NzButtonModule,
     AppRoutingModule,
     MatSidenavModule,
     SidebarModule.forRoot(),

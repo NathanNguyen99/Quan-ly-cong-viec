@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ModalDismissReasons, NgbActiveModal, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { faSquare, faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faSquare, faGripVertical, faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons';
 import { Task, TaskStatus, TaskStatusColors, TaskStatusDisplay } from '../Shared/Models/task.model';
 import { ProductService } from '../Shared/Services/product.service';
 import { User } from '../Shared/Models/user';
@@ -24,6 +24,7 @@ export class TaskComponent implements OnInit {
   toDate!: NgbDateStruct;
   faSquare = faSquare;
   faTrashAlt = faTrashAlt; 
+  faGripVertical = faGripVertical;
   faPen = faPen
   onchangeStateClicked() {
     this.changeStateClicked.emit()
