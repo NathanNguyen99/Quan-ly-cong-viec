@@ -1,19 +1,42 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { ModalDismissReasons, NgbActiveModal, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { faSquare, faGripVertical, faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons';
-import { Task, TaskStatus, TaskStatusColors, TaskStatusDisplay } from '../Shared/Models/task.model';
+import {
+  ModalDismissReasons,
+  NgbActiveModal,
+  NgbDateStruct,
+  NgbModal,
+} from '@ng-bootstrap/ng-bootstrap';
+import {
+  faSquare,
+  faGripVertical,
+  faTrashAlt,
+  faPen,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  Task,
+  TaskStatus,
+  TaskStatusColors,
+  TaskStatusDisplay,
+} from '../Shared/Models/task.model';
 import { ProductService } from '../Shared/Services/product.service';
 import { User } from '../Shared/Models/user';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ProductQuery } from '../Shared/Services/product.query';
 import { DeleteIssueModel } from '../Shared/Models/ui-model/delete-issue-model';
 import { Observable } from 'rxjs';
+import { IssueModalComponent } from './issue-modal/issue-modal.component';
 
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss']
+  styleUrls: ['./task.component.scss'],
 })
 @UntilDestroy()
 export class TaskComponent implements OnInit {
@@ -23,35 +46,43 @@ export class TaskComponent implements OnInit {
   fromDate!: NgbDateStruct;
   toDate!: NgbDateStruct;
   faSquare = faSquare;
-  faTrashAlt = faTrashAlt; 
+  faTrashAlt = faTrashAlt;
   faGripVertical = faGripVertical;
-  faPen = faPen
+  faPen = faPen;
   onchangeStateClicked() {
-    this.changeStateClicked.emit()
+    this.changeStateClicked.emit();
   }
 
   TaskStatusDisplay = TaskStatusDisplay;
   TaskStatusColors = TaskStatusColors;
 
-  constructor(public activeModal: NgbActiveModal,private productService: ProductService,public _productQuery: ProductQuery, private _modalService: NzModalService, private modalService: NgbModal) {}
+  constructor(
+    public activeModal: NgbActiveModal,
+    private productService: ProductService,
+    public _productQuery: ProductQuery,
+    private _modalService: NzModalService,
+    private modalService: NgbModal
+  ) {}
   //ngOnInit(): void {}
-  //Below are new modification 
+  //Below are new modification
   assignees: User[];
   issueTypeIcon: string;
   //priorityIcon: IssuePriorityIcon;
 
-  task$ : Observable<Task>;
+  task$: Observable<Task>;
   ngOnInit(): void {
     this.issueStatuses = [
       new IssueStatusValueTitle(TaskStatus.TODO),
       new IssueStatusValueTitle(TaskStatus.SELECTED),
       new IssueStatusValueTitle(TaskStatus.IN_PROGRESS),
-      new IssueStatusValueTitle(TaskStatus.DONE)
+      new IssueStatusValueTitle(TaskStatus.DONE),
     ];
     this._productQuery.users$.pipe(untilDestroyed(this)).subscribe((users) => {
-      this.assignees = this.task.userIds.map((userId) => users.find((x) => x.id === userId));
+      this.assignees = this.task.userIds.map((userId) =>
+        users.find((x) => x.id === userId)
+      );
     });
-    this.task$ = this._productQuery.issueById$(this.task.id)
+    this.task$ = this._productQuery.issueById$(this.task.id);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -86,7 +117,7 @@ export class TaskComponent implements OnInit {
   }
 
   closeModal() {
-    this.activeModal.dismiss('Cross click')
+    this.activeModal.dismiss('Cross click');
   }
 
   // openIssuePage(issueId: string) {
@@ -94,20 +125,22 @@ export class TaskComponent implements OnInit {
   //   this._router.navigate(['project', 'issue', issueId]);
   // }
 
-  deleteTask(issueId : string) {
+  deleteTask(issueId: string) {
     this.productService.deleteTask(issueId);
-    this.modalService.dismissAll('cross click')
+    this.modalService.dismissAll('cross click');
   }
 
   closeResult = '';
-  open(content:any, size:string) {
-    this.modalService.open(content, { size: size }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  open(content: any, size: string) {
+    this.modalService.open(content, { size: size }).result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
   }
-
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -130,10 +163,21 @@ export class TaskComponent implements OnInit {
     this.productService.updateTask({
       ...this.task,
       status,
-      listPosition: newPosition + 1
+      listPosition: newPosition + 1,
     });
   }
-  
+
+  openIssueModal(issueId: string) {
+    this._modalService.create({
+      nzContent: IssueModalComponent,
+      nzWidth: 1040,
+      nzClosable: false,
+      nzFooter: null,
+      nzComponentParams: {
+        task$: this._productQuery.issueById$(issueId)
+      }
+    });
+  }
 }
 // [[],[]]
 class IssueStatusValueTitle {

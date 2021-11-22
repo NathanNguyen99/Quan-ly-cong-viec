@@ -1,3 +1,4 @@
+<!-- open(content, 'xl') -->
 <div
   class="task"
   style="margin-left: 32px; border-radius: 4px; z-index: -1"
@@ -13,7 +14,7 @@
           [icon]="faSquare"
         ></fa-icon>
     
-        <span (click)="open(content, 'xl')">{{ this.task.name }}</span>
+        <span (click)="openIssueModal(task.id)">{{ this.task.name }}</span>
         <!-- nz-tooltip
             [nzTooltipMouseEnterDelay]="0.3"
             nzTooltipTitle="Assignee: {{ user.name }}"

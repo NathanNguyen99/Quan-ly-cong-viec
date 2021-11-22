@@ -83,6 +83,9 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { IssueDescriptionComponent } from './task/issue-description/issue-description.component';
+import { IssueModalComponent } from './task/issue-modal/issue-modal.component';
+import { DeleteIssueModalComponent } from './task/delete-issue-modal/delete-issue-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -113,6 +116,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     InputComponent,
     AddTaskModalComponent,
     TaskAssigneesComponent,
+    IssueDescriptionComponent,
+    IssueModalComponent,
+    DeleteIssueModalComponent,
   ],
   imports: [
     BrowserModule,

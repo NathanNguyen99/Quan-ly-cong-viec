@@ -1,0 +1,12 @@
+.desc-section {
+  width: 100%;
+  height: 10rem;
+  border: none;
+  overflow: hidden;
+  resize: none;
+  padding: 0.25rem 0.25rem;
+}
+
+.desc-section:focus {
+    overflow: scroll;
+}

@@ -112,10 +112,11 @@ export class DataService implements InMemoryDbService {
         tasks: [
           {
             name: 'Quản lý thời gian',
+            description: 'Thực hiện theo chỉ thị 16, ta nên làm việc kia và làm việc nọ một cách nghiêm túc',
             fromDate: '12/6/21',
             toDate: '8/7/21',
             id: '1',
-            status: 'Done',
+            status: 'Todo',
             createdAt: '2020-10-26T15:13:08.070Z',
             userIds: [
               'd65047e5-f4cf-4caa-9a38-6073dcbab7d1',
@@ -125,6 +126,7 @@ export class DataService implements InMemoryDbService {
           },
           {
             name: 'Quản lý công trình liên tỉnh',
+            description: 'Cuộc sống đầy rẫy sự bất công',
             fromDate: '12/6/21',
             toDate: '8/7/21',
             id: '2',
@@ -135,6 +137,7 @@ export class DataService implements InMemoryDbService {
           },
           {
             name: 'Quản lý tình huống',
+            description: 'Begin to be now what you will be hereafter.',
             fromDate: '12/6/21',
             toDate: '8/7/21',
             id: '3',
@@ -149,6 +152,7 @@ export class DataService implements InMemoryDbService {
           },
           {
             name: 'Kiểm kê số lượng router',
+            description: 'You’re off to great places, today is your day. Your mountain is waiting, so get on your way.',
             fromDate: '12/6/21',
             toDate: '8/7/21',
             id: '4',
@@ -163,6 +167,7 @@ export class DataService implements InMemoryDbService {
           },
           {
             name: 'Công trình liên địa phươhng',
+            description: 'You always pass failure on the way to success.',
             fromDate: '12/6/21',
             toDate: '8/7/21',
             id: '5',
